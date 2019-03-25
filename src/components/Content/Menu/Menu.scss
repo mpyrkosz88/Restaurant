@@ -1,0 +1,21 @@
+.Menu {
+  margin: 0 -20px 0 20px;
+  background-color: #1E1E1E;
+  width: 100%;
+  padding: 1rem;
+  .Item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  h3 {
+    padding: 16px 8px;
+    border-top: 1px solid #EAEAEA;
+    border-bottom: 1px solid #EAEAEA;
+    text-transform: uppercase;
+    margin: 48px 0;
+  }
+  li {
+    margin: 32px 0;
+  }
+}

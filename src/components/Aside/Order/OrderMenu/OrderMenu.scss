@@ -1,0 +1,45 @@
+.Dropdown {
+    margin-bottom:16px;
+    cursor: pointer;
+    p {
+        margin: 0;
+    }
+   li{
+       text-transform: uppercase;
+       margin: 4px 0;
+   } 
+
+    .DishesMenu {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
+        padding-right: 8px;
+        align-items: center;
+    }
+
+    .HiddenMenu{
+        overflow: hidden;
+    }
+ul{
+    border-top: 1px solid white;
+}
+}
+.Dropdown i{
+    transition: 0.5s;
+}
+.HideMenu {
+    ul{
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+    }
+}
+.ShowMenu {
+    ul{
+        max-height: 300px; 
+        transition: max-height 1s ease-in;
+
+    }
+    i {
+        transform: rotate(180deg)
+    }
+}

@@ -1,0 +1,52 @@
+.Slider {
+  width: 100%;
+  border: 2rem solid #1E1E1E;
+  position: relative;
+  margin: 0 20px;
+  ul {
+    margin:0;
+  }
+  .Left {
+    transition: 1s ease;
+    opacity:0;
+    margin-left: 1rem;
+    position: absolute;
+    color:rgba(255, 255, 255, 0.6);
+    left:0%;
+    top:50%;
+    z-index: 1000;
+    cursor: pointer;
+    line-height: 100%;
+    transform: translateY(-50%);
+  }
+  .Right {
+    transition: 1s ease;
+    cursor: pointer;
+    opacity:0;
+    margin-right: 1rem;
+    position: absolute;
+    color:rgba(255, 255, 255, 0.6);
+    right:0%;
+    top:50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+}
+    .Left:hover, .Right:hover {
+      color:rgba(255, 255, 255, 1);
+    }
+.Slider:hover i, .Slider:hover .StopPlay {
+  transition: 1s ease;
+  opacity: 1;
+}
+.StopPlay {
+  transition: 1s ease;
+  opacity:0;
+  margin-top: 1rem;
+  position: absolute;
+  color:rgba(255, 255, 255, 0.6);
+  right:0%;
+  top:100%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}

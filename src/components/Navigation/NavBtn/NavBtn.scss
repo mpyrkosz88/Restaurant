@@ -1,0 +1,54 @@
+.NavigationBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 14px;
+  height: 25px;
+  padding: 0;
+  position: relative;
+  width: 25px;
+  cursor: pointer;
+  &:focus {
+    outline-color: #d8b093;
+  }
+    span {
+      background: #383838;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      transition: background 0.4s;
+      width: 22px;
+      z-index: 500px;
+      &::before, &::after {
+        content: "";
+        background: #383838;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        transition: top 0.5s, left 0.5s, transform 0.5s;
+        width: 22px;
+      }
+      &::before {
+        top: 8px;
+      }
+      &::after {
+        top: -8px;
+      }
+  }
+}
+
+.Active span {
+  background: rgba(0,0,0,0);
+  &::before {
+    left: 0;
+    top: 0;
+    transform: rotate(45deg);
+  }
+  &::after {
+    left: 0;
+    top: 0;
+    transform: rotate(135deg);
+  }
+}

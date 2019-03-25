@@ -1,0 +1,21 @@
+.ItemContainer {
+    .Item {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    p{
+        text-align: left;
+        padding-right: 40px;
+    }
+    border-bottom: 1px solid #EAEAEA;
+    padding: 20px;
+    img {
+        width: 100%;
+        height: 100%;
+        padding-right: 16px;
+    }
+}
+.ItemContainer:hover {
+     background-color: rgba($color: #EAEAEA, $alpha: 0.05)
+}

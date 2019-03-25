@@ -1,0 +1,36 @@
+.Footer {
+    border-top: 1px solid #EAEAEA;
+    margin: 0 40px;
+    padding: 50px 0;
+    p {
+        text-align: center;
+        margin: 0;
+    }
+}
+.Images {
+    text-align: center;
+    a {
+        display: inline-block;
+    }
+    margin: 24px 0;
+    a:first-child>img:hover {
+        border-radius: 2px;
+    }
+    img {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin: 10px;
+        filter: invert(100%);
+        &:hover {
+            border-radius: 50%;
+            filter:invert(50%);
+        }
+
+    }
+}
+
+.SecondText {
+    color: #656565;
+    font-size: 11px;
+}

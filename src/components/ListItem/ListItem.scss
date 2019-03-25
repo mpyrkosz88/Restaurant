@@ -1,0 +1,40 @@
+.ListItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+.ListItemBackground {
+    position: absolute;
+    z-index: 100;
+    background-color: #1E1E1E;
+    background-color: rgba(30, 30, 30, 0.50);
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    opacity:0;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ListItemBackground:hover {
+    opacity:1;
+  }
+}
+.Likes {
+  i{
+    color: white;
+    cursor: pointer;
+  }
+  i:hover {
+    color: rgba(255, 0, 0, 0.50);
+  }
+  i:active {
+    color: red;
+  } 
+  span {
+    margin-left: 1rem;
+    font-size: 2rem;
+    color: white;
+  }
+}

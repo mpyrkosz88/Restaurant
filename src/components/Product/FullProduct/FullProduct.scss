@@ -1,0 +1,21 @@
+$mainBtnColor: #383838;
+$secondFontColor: #d8b093;
+$PriceName: #CF8E67;
+
+.FullProduct {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    h3 {
+        color: $secondFontColor;
+        margin: 25px 0;
+    }
+}
+.ProductContent, .ProductImg {
+    img {
+        width: 100%;
+    }
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}

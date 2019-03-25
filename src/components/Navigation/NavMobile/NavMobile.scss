@@ -1,0 +1,62 @@
+.NavMobile {
+  background-color: #D5D4E6;
+  display: none;
+  position: relative;
+  .NavMenu {
+    background-color: #D5D4E6;
+    position: absolute;
+    top:100%;
+    transform-origin: 100% 0%;
+    width: 100%;
+    z-index: 100;
+    ul {
+      margin: 0;
+    }
+    li:not(:first-child) {
+      border-top: 1px solid rgb(239, 239, 239);
+    }
+    a {
+      color: rgb(239, 239, 239);
+      display: flex;
+      padding: 10px 25px;
+      margin: 5px auto;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 1px #000;
+      &:hover {
+        color:#FFFFFF;
+        text-decoration: none;
+      }
+      }
+      .Active {
+        color: #9996cd;
+        &:hover {
+          color:#9996cd;
+          text-decoration: none;
+        }
+      }
+
+    }
+  .Active {
+     color: #d8b093;
+  }
+}
+
+@media (max-width: 768px) {
+  .NavMobile {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.Show {
+  transition: all 1s;
+  opacity: 1;
+  transform:scaleY(1);
+}
+
+.Hide {
+  transition: all 1s;
+  opacity: 0;
+  transform:scaleY(0);
+}
