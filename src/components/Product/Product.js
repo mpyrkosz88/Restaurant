@@ -1,31 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+
+import Modal from './../UI/Modal/Modal';
+import ModalProduct from './ModalProduct/ModalProduct';
+import ReactAux from '../../hoc/ReactAux/ReactAux';
+
+import Backdrop from './../UI/Backdrop/Backdrop'
 
 //classes
 import classes from './Product.scss';
 
-import Img from '../../assets/images/Lunch/Lunch1.JPG'
-const product = (props) => {
-    return (
-        <Grid container alignItems="center" className={classes.ItemContainer}>
-            <Grid item xs={3}>
-                <figure><img src={Img} alt="Watch" /> </figure>
-            </Grid>
-            <Grid item xs={9} >
-                <div className={classes.Item}>
-                    <h5>Jakieś danie</h5>
-                    <span>3zł</span>
-                </div>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia placeat corporis</p>
-            </Grid>
-        </Grid>
-    )
+//actions
+import * as actionTypes from '../../store/actions/actionTypes';
+
+class Product extends Component {
+    state = {
+        show: false,
+    }
+
+    showModal = () => {
+        this.setState({ show: true });
+    }
+
+    closeModal = () => {
+        this.setState({ show: false });
+    }
+
+    render() {
+        return (
+            <ReactAux>
+
+                <Grid container alignItems="center" className={classes.ItemContainer} onClick={() => this.showModal()}>
+                    <Grid item xs={3}>
+                        <figure><img src={this.props.imgUrl} alt="Dish" className={classes.Img} /> </figure>
+                    </Grid>
+                    <Grid item xs={9} >
+                        <div className={classes.Item}>
+                            <h5>{this.props.name}</h5>
+                            <span>{this.props.price} zł</span>
+                        </div>
+                        <p>{this.props.description}</p>
+                    </Grid>
+
+                </Grid>
+                <Modal show={this.state.show} clicked={this.closeModal}>
+                    <ModalProduct
+                        imgUrl={this.props.imgUrl} name={this.props.name} price={this.props.price} description={this.props.description} clicked={() => this.props.addToCart(this.props.id, this.props.price)} />
+                </Modal>
+                <Backdrop show={this.state.show} />
+            </ReactAux>
+        )
+    }
 }
 
-export default product
-{/* <div className={classes.Item}>
-        <h5>{itemData.special ? <i className="fas fa-certificate">&nbsp;</i> : null}{itemData.name}</h5>
-        <span>{itemData.price}</span>
-        </div>
- <p>{itemData.description}</p> */}
- {/* <figure><img src={props.imgUrl} alt="Watch" /> </figure> */}
+const mapStateToProps = (state, props) => {
+    return {
+        cart: state.cart.cart_items,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToCart: (id, price) => dispatch({ type: actionTypes.CART_ADD, payload: { id, price } })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)

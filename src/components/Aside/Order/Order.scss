@@ -10,7 +10,7 @@
 }
 .OrderContainer {
     border-top: 3px solid #EAEAEA;
-    margin-top: 100px;
+    margin-top: 50px;
     .OrderTitle {
         display: flex;
         flex-flow: wrap;
@@ -20,21 +20,6 @@
             color: rgba(234, 234, 234, 0.3);
         }
     }
-    .OrderItems {
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap;
-        i{
-            margin-right: 20px;
-            color: rgba(234, 234, 234, 0.3);
-        }
-        p {
-            color: rgba(234, 234, 234, 0.3);
-            padding: 10%;
-        }
-
-        border-bottom: 1px solid #EAEAEA;
-    }
     .OrderSummarize {
         display: flex;
         flex-flow: wrap;
@@ -43,3 +28,8 @@
     }
 }
 
+@media (max-width: 600px) {
+    .OrderAside {
+     margin: 0px 30px -1px 20px;
+    }
+  }

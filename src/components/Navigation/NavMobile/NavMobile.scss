@@ -1,21 +1,31 @@
 .NavMobile {
-  background-color: #D5D4E6;
   display: none;
   position: relative;
-  .NavMenu {
-    background-color: #D5D4E6;
+  width: 100%;
+  margin-bottom: 5px;
+  .NavContainer {
     position: absolute;
-    top:100%;
-    transform-origin: 100% 0%;
     width: 100%;
-    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px 25px 0 0;
+    z-index: 500;
+  }
+  .NavMenu {
+    background-color: #1E1E1E;
+    position: absolute;
+    left:10%;
+    top:calc( 100% - 25px);
+    transform-origin: 100% 0%;
+    width: 80%;
+    border: 1px solid #EAEAEA;
     ul {
       margin: 0;
     }
     li:not(:first-child) {
       border-top: 1px solid rgb(239, 239, 239);
     }
-    a {
+    a, .SignIn {
       color: rgb(239, 239, 239);
       display: flex;
       padding: 10px 25px;
@@ -28,24 +38,26 @@
         text-decoration: none;
       }
       }
+      .SignIn {
+        cursor: pointer;
+      }
       .Active {
-        color: #9996cd;
+        color: #B2B1B1;;
         &:hover {
-          color:#9996cd;
+          color:#B2B1B1;
           text-decoration: none;
         }
       }
 
     }
   .Active {
-     color: #d8b093;
+     color: #B2B1B1;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .NavMobile {
     display: flex;
-    justify-content: flex-end;
   }
 }
 
@@ -55,8 +67,8 @@
   transform:scaleY(1);
 }
 
-.Hide {
-  transition: all 1s;
-  opacity: 0;
-  transform:scaleY(0);
-}
+  .Hide {
+    transition: all 1s;
+    opacity: 0;
+    transform:scaleY(0);
+  }

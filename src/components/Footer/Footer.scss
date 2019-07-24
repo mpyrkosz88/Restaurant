@@ -1,12 +1,13 @@
 .Footer {
     border-top: 1px solid #EAEAEA;
-    margin: 0 40px;
-    padding: 50px 0;
+    padding: 50px 0px;
+    background-color:#1E1E1E;
     p {
         text-align: center;
         margin: 0;
     }
 }
+
 .Images {
     text-align: center;
     a {
@@ -34,3 +35,22 @@
     color: #656565;
     font-size: 11px;
 }
+
+
+@media (max-width: 600px) {
+    .Footer {
+      display: none;
+    }
+  }
+  
+  .Show {
+      display: none;
+  }
+
+  @media (max-width: 600px) {
+    .Show {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+

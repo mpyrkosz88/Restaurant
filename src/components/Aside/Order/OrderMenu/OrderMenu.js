@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
+//hoc
+import ReactAux from './../../../../hoc/ReactAux/ReactAux';
+
+//classes
 import classes from './OrderMenu.scss';
 
 class OrderMenu extends Component {
@@ -15,20 +20,27 @@ class OrderMenu extends Component {
         let showMenu = classes.HideMenu
         this.state.hide ? showMenu = classes.HideMenu : showMenu = classes.ShowMenu
         return (
-            <li className={classes.Dropdown + " " + showMenu} onClick={this.ShowMenu}>
-                <div className={classes.DishesMenu}>
-                    <p>{this.props.title} </p> <i className="fas fa-chevron-up"></i>
-                </div>
-                <ul className={classes.HiddenMenu}>
-                    {this.props.dishes.map(data =>(
-                            <li key={data}>{data}</li>
+            <ReactAux>
+                <li className={classes.Dropdown + " " + showMenu}>
+                    <div className={classes.DishesMenu} onClick={this.ShowMenu}>
+                        <p>{this.props.title}</p> <i className="fas fa-chevron-up"></i>
+                    </div>
+                    <ul className={classes.HiddenMenu}>
+                        {this.props.dishes.map((data) => {
+                            return (
+                                Object.keys(data).map((dish, index) => {
+                                    return (
+                                        <li key={index}><NavLink to={"/order/" + this.props.title + "_" + dish} activeClassName={classes.Active}>{dish}</NavLink></li>
+                                    )
+                                })
                             )
-                        )
-                    }
-                </ul>
-            </li>
+                        })}
+                    </ul>
+                </li>
+            </ReactAux>
         );
     }
 }
+
 
 export default OrderMenu

@@ -1,11 +1,15 @@
 //libraries
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+
 //styles
 import classes from './TopNav.scss';
 //components
 import NavItem from '../NavItem/NavItem';
 import Logo from '../Logo/Logo';
+
+import * as actionTypes from '../../../store/actions/actionTypes';
 
 const top_navigation = (props) => (
   <nav className={classes.Navigation}>
@@ -38,18 +42,28 @@ const top_navigation = (props) => (
           Order Online
         </NavItem>
         <NavItem
-          link={`/team`} 
-          active={classes.Active}>
-          Team
-        </NavItem>
-        <NavItem
           link={`/contact`}
           active={classes.Active}>
         Contact
         </NavItem>
+        <li>
+          <i className="fas fa-user-circle fa-2x" onClick={() => props.showModal()}></i>
+        </li>
       </ul>
     </Grid>
   </nav>
 )
 
-export default top_navigation;
+const mapStateToProps = (state, props) => {
+  return {
+      auth: state.auth,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      showModal: () => dispatch({ type: actionTypes.OPEN_MODAL })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(top_navigation)

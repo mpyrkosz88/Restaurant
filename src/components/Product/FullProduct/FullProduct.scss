@@ -3,19 +3,64 @@ $secondFontColor: #d8b093;
 $PriceName: #CF8E67;
 
 .FullProduct {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
-    margin: auto;
+
     h3 {
         color: $secondFontColor;
         margin: 25px 0;
     }
-}
-.ProductContent, .ProductImg {
-    img {
-        width: 100%;
+
+    i,
+    a {
+        color: grey;
+        cursor: auto;
     }
-    width: 50%;
-    display: flex;
-    flex-flow: column;
+
+    .ActiveLink:hover {
+        color: white;
+        transform: scale(1.1);
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .ProductContent {
+        margin: 30px;
+    }
+
+    .ProductImg {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        margin: 0;
+
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+.FullButton {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.CloseButton {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+
+    &:hover {
+        color: white;
+        transform: scale(1.1);
+        transition: 0.5s;
+        cursor: pointer;
+        
+    }
 }

@@ -9,10 +9,11 @@ import ListItem from '../../ListItem/ListItem';
 
 //images
 import RestaurantImage from '../../../assets/images/Restaurant/Restaurant1.webp'
-import data from './data';
+import dataBase from '../../../assets/data/Restaurant/dataBase';
 
 class Restaurant extends Component {
   render() {
+    const data = dataBase.Restaurant;
     return (
       <section className={classes.RestaurantContainer}>
         <div className={classes.TitleImg}>
@@ -21,11 +22,13 @@ class Restaurant extends Component {
         <GridList cellHeight={'auto'} cols={2} spacing={16}>
           {data.map((index) => {
             return (
-              <GridListTile key={index.id}>
+              <GridListTile key={index.id} className={classes.RestaurantItem}>
                 <ListItem
                   imgUrl={index.imgUrl}
                   key={index.id}
                   likes={index.likes}
+                  match={this.props.match}
+                  id={index.id}
                 />
               </GridListTile>
             )

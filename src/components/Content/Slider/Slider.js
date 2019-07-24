@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import classes from "./Slider.scss";
 
-import data from './data';
+import data from '../../../assets/data/Slider/data';
 
 import SliderItem from "./SliderItem/SliderItem";
 
@@ -13,10 +13,20 @@ class Slider extends Component {
     'start':false,
   }
   
+  componentDidMount() {
+    this.startInterval()
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)    
+    this.setState({
+      start: false
+    })
+  }
+  
   startInterval = () => {
     if (this.state.start) {
-      clearInterval(this.interval)
-      console.log('stop jest');      
+      clearInterval(this.interval)    
       this.setState({
         start: false
       })
@@ -26,7 +36,6 @@ class Slider extends Component {
       this.setState({
         start: true
       })
-      console.log("start jest");
     }
   }
   
@@ -39,7 +48,6 @@ class Slider extends Component {
     this.setState({
       number: number
     })
-    console.log('dziala');
   }
 
   changeSlideLeft = () => {

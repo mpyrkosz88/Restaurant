@@ -4,14 +4,14 @@
   font-size: 14px;
   height: 25px;
   padding: 0;
-  position: relative;
   width: 25px;
+  position: relative;
   cursor: pointer;
   &:focus {
-    outline-color: #d8b093;
+    outline: none;
   }
     span {
-      background: #383838;
+      background: #EAEAEA;
       height: 2px;
       left: 50%;
       position: absolute;
@@ -22,7 +22,7 @@
       z-index: 500px;
       &::before, &::after {
         content: "";
-        background: #383838;
+        background: #EAEAEA;
         height: 2px;
         left: 50%;
         position: absolute;
@@ -40,7 +40,7 @@
 }
 
 .Active span {
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   &::before {
     left: 0;
     top: 0;

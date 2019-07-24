@@ -1,13 +1,28 @@
 .Dropdown {
-    margin-bottom:16px;
+    margin-bottom: 16px;
     cursor: pointer;
+
     p {
         margin: 0;
     }
-   li{
-       text-transform: uppercase;
-       margin: 4px 0;
-   } 
+
+    li {
+        text-transform: uppercase;
+        margin: 4px 0;
+
+        &:hover {
+            color: rgba(234, 234, 234, 0.3);
+        }
+        a {
+            color: inherit;
+        }
+        a:hover {
+            color: rgba(234, 234, 234, 0.3);
+        }
+        .Active {
+            color: rgba(234, 234, 234, 0.3);
+        }
+    }
 
     .DishesMenu {
         display: flex;
@@ -15,31 +30,44 @@
         flex-flow: wrap;
         padding-right: 8px;
         align-items: center;
+
+        &:hover>p {
+            color: rgba(234, 234, 234, 0.3);
+        }
+
+        &:hover>i {
+            color: rgba(234, 234, 234, 0.3);
+        }
     }
 
-    .HiddenMenu{
+    .HiddenMenu {
         overflow: hidden;
     }
-ul{
-    border-top: 1px solid white;
+
+    ul {
+        border-top: 1px solid white;
+    }
 }
+
+.Dropdown i {
+    transition: transform 0.5s;
 }
-.Dropdown i{
-    transition: 0.5s;
-}
+
 .HideMenu {
-    ul{
+    ul {
         max-height: 0;
         transition: max-height 0.3s ease-out;
     }
 }
+
 .ShowMenu {
-    ul{
-        max-height: 300px; 
+    ul {
+        max-height: 300px;
         transition: max-height 1s ease-in;
 
     }
+
     i {
-        transform: rotate(180deg)
+        transform: rotate(180deg);
     }
 }

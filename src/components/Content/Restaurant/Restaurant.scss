@@ -11,3 +11,13 @@
     height: 100%;
   }
 }
+.RestaurantItem:hover>div {
+  transform: scale(0.98);
+  transition: 1s;
+ }
+
+ @media (max-width: 600px) {
+  .RestaurantContainer {
+    margin : 0;
+  }
+}

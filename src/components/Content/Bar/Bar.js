@@ -8,10 +8,11 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ListItem from '../../ListItem/ListItem';
 
 //images
-import data from './data';
+import dataBase from '../../../assets/data/Restaurant/dataBase';
 
 class Bar extends Component {
   render() {
+    const data = dataBase.Bar;
     return (
       <section className={classes.Bar}>
         <GridList cellHeight={'auto'} cols={2} spacing={16}>
@@ -22,6 +23,8 @@ class Bar extends Component {
                   imgUrl={index.imgUrl}
                   key={index.id}
                   likes={index.likes}
+                  match={this.props.match}
+                  id={index.id}
                 />
               </GridListTile>
             )
