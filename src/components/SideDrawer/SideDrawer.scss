@@ -1,0 +1,91 @@
+.SideDrawer {
+    position: absolute;
+    width: 294%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: #1E1E1E;
+    // box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    padding: 50px;
+    border: 1px solid #656565;
+}
+
+.OrderContainer {
+    border: 1px solid #656565;
+    height: calc(100% - 108px);
+    .OrderTitle, .OrderSummarize {
+        margin: 20px;
+        padding-bottom: 20px;
+        justify-content: space-between;
+    }
+    .OrderTitle {
+        border-bottom: 1px solid #656565;
+    }
+    div {
+        display: flex;
+    }
+    h5 {
+        margin:0;
+        font-size: 30px;
+    }
+    span, p {
+        font-size: 20px;
+    }
+    p{ 
+        margin-left: 10px;
+    }
+    .OrderSummarizePrice {
+        font-size:30px;
+    }
+}
+
+.OrderList {
+    display: flex;
+    flex-flow: column;
+    border-bottom: 1px solid #EAEAEA;
+    li {
+        margin: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+}
+
+.Button {
+    background-color: #1E1E1E;
+    border: 1px solid #EAEAEA;
+    color: #EAEAEA;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 40px;
+    height: 68px;
+}
+
+.Arrow:before {
+    content: "<";
+    margin-right: 10px;
+}
+
+// @media (min-width: 500px) {
+//     .SideDrawer {
+//         display: none;
+//     }
+// }
+
+// .Open {
+//     transform: translateX(0);
+// }
+
+// .Close {
+//     transform: translateX(-100%);
+// }
+
+// .Logo {
+//     height: 11%;
+//     margin-bottom: 32px;
+// }

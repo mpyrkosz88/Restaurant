@@ -26,6 +26,15 @@
         justify-content: space-between;
         padding-right: 20px;
     }
+        .Button {
+            background-color: #EAEAEA;
+            color: black;
+            text-transform: uppercase;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+    }
 }
 
 @media (max-width: 600px) {

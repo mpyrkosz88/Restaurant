@@ -72,7 +72,7 @@ class Contact extends Component {
     formIsValid: false,
 }
 
-orderHandler = ( event ) => {
+submitHandler = ( event ) => {
   event.preventDefault();
 }
 
@@ -136,7 +136,7 @@ inputChangedHandler = (event, inputIdentifier) => {
       })
     }
     let form = (
-      <form onSubmit={this.orderHandler}>
+      <form onSubmit={this.submitHandler}>
       {formElementsArray.map(formElement => {
         return (
           <Input key= {formElement.id}

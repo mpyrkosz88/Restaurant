@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import classes from './Order.scss';
 import OrderMenu from './OrderMenu/OrderMenu';
 import OrderCart from './OrderCart/OrderCart';
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
 
-import dataBase from '../../../assets/data/Menu/dataBase';
+
+import dataBase from '../../assets/data/Menu/dataBase';
 
 class Order extends Component {
     render() {
@@ -31,8 +33,9 @@ class Order extends Component {
                         <p>Subtotal</p>
                         <span>{this.props.price} zł</span>
                     </div>
-                    <button>Order Now</button>
+                    <button className={classes.Button}>Order Now</button>
                 </div>
+                    <SideDrawer />
             </div>
         );
     }

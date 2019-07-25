@@ -1,0 +1,31 @@
+.Auth {
+    width: 80%;
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .Auth {
+        width: 500px;
+    }
+}
+
+.ButtonContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content:space-between;
+    margin-top: 10px;
+    button {
+        background-color: #EAEAEA;
+        color: black;
+        text-transform: uppercase;
+        padding: 10px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        width: 50%;
+        margin: 20px;
+    }
+  }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactAux from '../../../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../../hoc/ReactAux/ReactAux';
 import classes from './OrderCart.scss';
 
 //actions
-import * as actionTypes from '../../../../store/actions/actionTypes';
+import * as actionTypes from '../../../store/actions/actionTypes';
 
 class OrderCart extends Component {
     render() {

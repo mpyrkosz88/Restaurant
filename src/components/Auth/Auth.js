@@ -3,9 +3,13 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import Modal from '../UI/Modal/Modal';
-
+import Backdrop from '../UI/Backdrop/Backdrop';
 import Input from '../../components/UI/Input/Input';
-import classes from './Auth.css';
+import ReactAux from '../../hoc/ReactAux/ReactAux';
+
+import classes from './Auth.scss';
+
+import * as actionTypes from '../../store/actions/actionTypes';
 
 class Auth extends Component {
 
@@ -15,12 +19,13 @@ class Auth extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'email',
-          placeholder: 'Mail Address'
+          placeholder: 'Your E-Mail'
         },
         value: '',
+        errormsg: 'Please type valid e-mail',
         validation: {
           required: true,
-          isEmail: true
+          checkedEmail: true,
         },
         valid: false,
         touched: false
@@ -32,6 +37,7 @@ class Auth extends Component {
           placeholder: 'Password'
         },
         value: '',
+        errormsg: 'Minimal length of password is 6',
         validation: {
           required: true,
           minLength: 6
@@ -40,96 +46,85 @@ class Auth extends Component {
         touched: false
       }
     },
-    isSignup: true
+    formIsValid: false,
   }
 
-  // componentDidMount () {
-  //   if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
-  //     this.props.onSetAuthRedirectPath();
-  //   }
-  // }
+  checkValiditiy(value, rules) {
+    let isValid = true;
 
-  // checkValiditiy(value, rules) {
-  //   let isValid = true;
+    if (!rules) {
+      return true;
+    }
 
-  //   if (!rules) {
-  //     return true;
-  //   }
+    if (rules.required) {
+      isValid = value.trim() !== '' && isValid;
+    }
 
-  //   if (rules.required) {
-  //     isValid = value.trim() !== '' && isValid;
-  //   }
+    if(rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid
+    }
 
-  //   if(rules.minLength) {
-  //     isValid = value.length >= rules.minLength && isValid
-  //   }
+    if(rules.checkedEmail) {
+      isValid = !((value.indexOf('@',1) == -1)  || (value.indexOf('.', 1) == -1))
+    }
 
-  //   if(rules.maxLength) {
-  //     isValid = value.length <= rules.maxLength && isValid
-  //   }
+    return isValid;
+  }
 
-  //   if (rules.isEmail) {
-  //       const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  //       isValid = pattern.test(value) && isValid
-  //   }
+  inputChangedHandler = (event, controlName) => {
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value,
+        valid: this.checkValiditiy(event.target.value, this.state.controls[controlName].validation),
+        touched: true
+      }
+    }
 
-  //   if (rules.isNumeric) {
-  //       const pattern = /^\d+$/;
-  //       isValid = pattern.test(value) && isValid
-  //   }
+    let formIsValid = true;
+    for (let inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
 
-  //   return isValid;
-  // }
+    this.setState({controls: updatedControls,  formIsValid: formIsValid})
+  }
 
-  // inputChangedHandler = (event, controlName) => {
-  //   const updatedControls = {
-  //     ...this.state.controls,
-  //     [controlName]: {
-  //       ...this.state.controls[controlName],
-  //       value: event.target.value,
-  //       valid: this.checkValiditiy(event.target.value, this.state.controls[controlName].validation),
-  //       touched: true
-  //     }
-  //   }
-  //   this.setState({controls: updatedControls})
-  // }
-
-  // submitHandler = (event) => {
-  //   event.preventDefault();
-  //   this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup)
-  // }
-
-  // switchAuthModeHandler = () => {
-  //   this.setState(prevState => {
-  //     return{isSignup: !prevState.isSignup}
-  //   })
-  // }
+  submitHandler = (event) => {
+    event.preventDefault();
+  }
 
   render() {
-    // const formElementsArray = [];
-    // for (let key in this.state.controls) {
-    //   formElementsArray.push({
-    //     id: key,
-    //     config: this.state.controls[key]
-    //   });
+    const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
 
-    // }
+    }
+    console.log(formElementsArray);
 
-    // let form = formElementsArray.map(formElement => (
-    //   <Input
-    //     key={formElement.id}
-    //     elementType={formElement.config.elementType}
-    //     elementConfig={formElement.config.elementConfig}
-    //     value={formElement.config.value}
-    //     invalid={!formElement.config.valid}
-    //     shouldValidate={formElement.config.validation}
-    //     touched={formElement.config.touched}
-    //     changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-    // ));
-
-    // if(this.props.loading) {
-    //   form = <Spinner />
-    // }
+    let form = (
+      <form onSubmit={this.submitHandler}>
+      {formElementsArray.map(formElement => (
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            invalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            changed={(event) => this.inputChangedHandler(event, formElement.id)} 
+            errormsg={formElement.config.errormsg}/>
+        ))}
+        <div className={classes.ButtonContainer}>
+          <button>Log In</button>
+          <button>Register</button>
+        </div> 
+      </form>
+    )
 
     // let errorMessage = null;
     //   console.log(this.props);
@@ -139,31 +134,30 @@ class Auth extends Component {
     //   )
     // }
 
-    // let authRedirect = null;
-    // if(this.props.isAuthenticated) {
-    //   authRedirect = <Redirect to={this.props.authRedirectPath} />
-    // }
-
-    return (
-      <Modal>
-        <div className={classes.Auth}>
-          Chuj
-        </div>
-      </Modal>
+    return ( 
+      <ReactAux>    
+        <Modal show={this.props.modalIsOpen} clicked={this.props.closeModal} >
+          <div className={classes.Auth}>
+                {form}
+          </div>
+        </Modal>
+        <Backdrop show={this.props.modalIsOpen}/>
+      </ReactAux>
     )
   }
 }
 
-export default (Auth)
+const mapStateToProps = (state, props) => {
+  console.log(state.auth);
+  return {
+    modalIsOpen: state.auth.modalIsOpen,
+  }
+}
 
+const mapDispatchToProps = dispatch => {
+  return {
+    closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL })
+  }
+}
 
-
-// {authRedirect}
-// {errorMessage}
-// <form onSubmit={this.submitHandler}>
-//     {form}
-//   <Button btnType="Success">Submit</Button>
-// </form>
-// <Button
-//   clicked={this.switchAuthModeHandler}
-//   btnType="Danger">Switch to {this.state.isSignup ? "SIGNIN" : "SIGNUP"}</Button>
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)

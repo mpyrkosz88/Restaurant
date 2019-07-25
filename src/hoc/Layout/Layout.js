@@ -7,6 +7,8 @@ import AsideMenu from '../AsideMenu/AsideMenu';
 import Navigation from '../../components/Navigation/Navigation';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../components/Auth/Auth';
+// import SideDrawer from '../../components/SideDrawer/SideDrawer';
+
 
 //styles
 import classes from './Layout.scss';

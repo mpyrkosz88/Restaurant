@@ -1,16 +1,20 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    authShow: true,
+    modalIsOpen: false,
 }
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.OPEN_MODAL: 
-        console.log(state);
         return {
             ...state,
-            authShow: !state.authShow
+            modalIsOpen: true,
+        }
+        case actionTypes.CLOSE_MODAL: 
+        return {
+            ...state,
+            modalIsOpen: false,
         }
         default:
             return state;

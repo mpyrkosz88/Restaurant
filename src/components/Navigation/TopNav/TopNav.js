@@ -2,6 +2,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 //styles
 import classes from './TopNav.scss';
@@ -17,18 +18,18 @@ const top_navigation = (props) => (
       <Logo />
     </Grid>
     <Grid item sm={8}>
-      <ul className={classes.NavigationMenu}>  
+      <ul className={classes.NavigationMenu}>
         <NavItem
           link={`/home`}
           active={classes.Active}>
           Home
-        </NavItem>   
+        </NavItem>
         <NavItem
           link={`/restaurant`}
           active={classes.Active}
           dropdown
           dropdown_link="bar"
-          >
+        >
           Restaurant
         </NavItem>
         <NavItem
@@ -44,7 +45,7 @@ const top_navigation = (props) => (
         <NavItem
           link={`/contact`}
           active={classes.Active}>
-        Contact
+          Contact
         </NavItem>
         <li>
           <i className="fas fa-user-circle fa-2x" onClick={() => props.showModal()}></i>
@@ -54,16 +55,22 @@ const top_navigation = (props) => (
   </nav>
 )
 
+
 const mapStateToProps = (state, props) => {
   return {
-      auth: state.auth,
+    modalIsOpen: state.auth.modalIsOpen
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-      showModal: () => dispatch({ type: actionTypes.OPEN_MODAL })
+    showModal: () => dispatch({ type: actionTypes.OPEN_MODAL })
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(top_navigation)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(top_navigation))
+
+
+
+
+

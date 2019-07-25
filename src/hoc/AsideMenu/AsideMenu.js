@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 
 //components
-import Home from '../../components/Aside/Home/Home';
-import Restaurant from '../../components/Aside/Restaurant/Restaurant';
-import Bar from '../../components/Aside/Bar/Bar';
-import Menu from '../../components/Aside/Menu/Menu';
-import Order from '../../components/Aside/Order/Order';
-import Contact from '../../components/Aside/Contact/Contact';
+import Home from '../../Aside/Home/Home';
+import Restaurant from '../../Aside/Restaurant/Restaurant';
+import Bar from '../../Aside/Bar/Bar';
+import Menu from '../../Aside/Menu/Menu';
+import Order from '../../Aside/Order/Order';
+import Contact from '../../Aside/Contact/Contact';
 
 //styles
 import classes from './AsideMenu.scss';
