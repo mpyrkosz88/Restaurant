@@ -31,7 +31,7 @@ class Product extends Component {
         return (
             <ReactAux>
 
-                <Grid container alignItems="center" className={classes.ItemContainer} onClick={() => this.showModal()}>
+                <Grid container alignItems="center" className={classes.ItemContainer} onClick={this.showModal}>
                     <Grid item xs={3}>
                         <figure><img src={this.props.imgUrl} alt="Dish" className={classes.Img} /> </figure>
                     </Grid>

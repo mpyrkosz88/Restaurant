@@ -1,7 +1,6 @@
 //libraries
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux';
 
 //hoc
 import ReactAux from './hoc/ReactAux/ReactAux';
@@ -18,8 +17,6 @@ import Contact from './components/Content/Contact/Contact';
 //containers
 import RestaurantContainer from './containers/RestaurantContainer';
 import BarContainer from './containers/BarContainer';
-
-
 
 class App extends Component {
 

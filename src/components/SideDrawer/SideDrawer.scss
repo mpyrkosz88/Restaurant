@@ -1,16 +1,28 @@
 .SideDrawer {
     position: absolute;
-    width: 294%;
     height: 100%;
     left: 0;
     top: 0;
     z-index: 200;
     background-color: #1E1E1E;
-    // box-sizing: border-box;
-    transition: transform 0.3s ease-out;
+    transition: width 0.3s ease-out;
     padding: 50px;
     border: 1px solid #656565;
 }
+
+.Open {
+    width: 294%;
+    padding: 50px;
+}
+
+.Close {
+    padding: 0;
+    width: 0;
+    overflow: hidden;
+    border:none;
+}
+
+
 
 .OrderContainer {
     border: 1px solid #656565;
@@ -71,21 +83,24 @@
     margin-right: 10px;
 }
 
-// @media (min-width: 500px) {
-//     .SideDrawer {
-//         display: none;
-//     }
-// }
-
-// .Open {
-//     transform: translateX(0);
-// }
-
-// .Close {
-//     transform: translateX(-100%);
-// }
-
-// .Logo {
-//     height: 11%;
-//     margin-bottom: 32px;
-// }
+@media (max-width: 600px) {
+    .Open {
+        width: 100%;
+        padding: 50px;
+    }
+    
+    .Close {
+        padding: 0;
+        width: 0;
+        overflow: hidden;
+        border:none;
+    }
+    .Button {
+        text-transform: uppercase;
+        padding: 20px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px;
+        height: 68px;
+    }
+}

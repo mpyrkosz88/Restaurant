@@ -5,7 +5,8 @@ const initialState = {
   cart_items: [],
   products: products,
   price: 0,
-  cart_quantity: 0
+  cart_quantity: 0,
+  sideDrawerIsOpen: false,
 }
 
 const addItem = (state, action) => {
@@ -54,12 +55,31 @@ const removeItem = (state, action) => {
   }
 }
 
+const openSidedrawer = (state, action) => {
+  return {
+    ...state,
+    sideDrawerIsOpen: true,
+  }
+}
+
+const closeSidedrawer = (state, action) => {
+  return {
+    ...state,
+    sideDrawerIsOpen: false,
+  }
+}
+
+
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CART_ADD:
       return addItem(state, action)
     case actionTypes.CART_REMOVE:
       return removeItem(state, action)
+    case actionTypes.OPEN_SIDEDRAWER:
+      return openSidedrawer(state, action)
+    case actionTypes.CLOSE_SIDEDRAWER:
+      return closeSidedrawer(state, action)
     default:
       return state;
   }
