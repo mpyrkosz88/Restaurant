@@ -13,13 +13,11 @@
     span {
       background: #EAEAEA;
       height: 2px;
-      left: 50%;
       position: absolute;
-      top: 50%;
       transform: translate(-50%,-50%);
       transition: background 0.4s;
       width: 22px;
-      z-index: 500px;
+      z-index: 500;
       &::before, &::after {
         content: "";
         background: #EAEAEA;

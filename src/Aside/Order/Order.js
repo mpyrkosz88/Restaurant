@@ -50,7 +50,6 @@ class Order extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    console.log(state.cart.cart_quantity);
     return {
         price: state.cart.price,
         quantity: state.cart.cart_quantity,

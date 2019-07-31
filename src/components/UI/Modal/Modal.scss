@@ -1,5 +1,5 @@
 .Modal {
-    position: fixed;
+    position: absolute;
     z-index: 500;
     background-color: #404040;
     width: 70%;
@@ -7,7 +7,6 @@
     top: 20%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
-
     i {
         box-sizing: border-box;
         background-color: black;
@@ -18,7 +17,9 @@
         right: calc(0% - 16px);
         top:calc(0% - 16px);
     }
+
 }
+
 
 @media (min-width: 600px) {
     .Modal {

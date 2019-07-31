@@ -35,22 +35,3 @@
     color: #656565;
     font-size: 11px;
 }
-
-
-@media (max-width: 600px) {
-    .Footer {
-      display: none;
-    }
-  }
-  
-  .Show {
-      display: none;
-  }
-
-  @media (max-width: 600px) {
-    .Show {
-      display: inline-block;
-      width: 100%;
-    }
-  }
-

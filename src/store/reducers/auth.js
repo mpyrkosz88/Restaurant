@@ -7,6 +7,7 @@ const initialState = {
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.OPEN_MODAL: 
+        console.log(state);
         return {
             ...state,
             modalIsOpen: true,

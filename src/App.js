@@ -33,8 +33,8 @@ class App extends Component {
             <Route path={'/order'} exact render={() => <Redirect to="/order/Breakfast_Mains" />} />
             <Route path={'/order/:id'} component={Order} />
             <Route path={'/contact'} component={Contact} />
-          </Switch>
-        </Layout>
+            </Switch>
+            </Layout>
         <Switch>
           <Route path={'/restaurant/:id'} component={RestaurantContainer} />
           <Route path={'/bar/:id'} component={BarContainer} />
@@ -45,3 +45,5 @@ class App extends Component {
 }
 
 export default App;
+
+// przeniesc Product do container oraz Order z Aside. Z OrderCart zmienic komponent zeby w Order bylo dodawanie do koszyka. SideDrawe również do container

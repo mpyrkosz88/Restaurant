@@ -1,6 +1,8 @@
 //libraries
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+//styles
 import classes from "./ListItem.scss";
 
 const listItem = (props) => {

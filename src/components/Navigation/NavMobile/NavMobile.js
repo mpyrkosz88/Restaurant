@@ -30,44 +30,58 @@ class NavMobile extends Component {
       <nav className={classes.NavMobile}>
         <Logo />
         <div className={classes.NavContainer}>
-          <NavBtn clicked={this.toggleMobile} active={this.state.active} />
           <div className={classes.NavMenu + " " + showMenu}>
             <ul>
               <NavItem
                 link={`/home`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Home
               </NavItem>
               <NavItem
                 link={`/restaurant`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Restaurant
-              </NavItem>
+             </NavItem>
               <NavItem
                 link={`/bar`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Bar
               </NavItem>
               <NavItem
                 link={`/menu`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Menu
               </NavItem>
               <NavItem
                 link={`/order`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Order Online
               </NavItem>
               <NavItem
                 link={`/contact`}
-                active={classes.Active}>
+                active={classes.Active}
+                clicked={this.toggleMobile}
+                >
                 Contact
               </NavItem>
-              <li className={classes.SignIn}>
+              <li className={classes.SignIn}
+              onClick={this.toggleMobile}
+              >
                 Sign In
               </li>
             </ul>
           </div>
+          <NavBtn clicked={this.toggleMobile} active={this.state.active} />
         </div>
       </nav>
     )

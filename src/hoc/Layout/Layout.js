@@ -7,8 +7,6 @@ import AsideMenu from '../AsideMenu/AsideMenu';
 import Navigation from '../../components/Navigation/Navigation';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../components/Auth/Auth';
-// import SideDrawer from '../../components/SideDrawer/SideDrawer';
-
 
 //styles
 import classes from './Layout.scss';
@@ -19,25 +17,27 @@ render() {
 
     return (
       <div className={classes.Layout}>
-        <Grid container justify="center" direction="row" style={{ maxWidth: "1024px", margin: "auto" }}>
+        <Grid container justify="center" direction="row" style={{ maxWidth: "1024px", margin: "auto"}}>
           <Grid item sm={12} xs={12}>
             <Navigation />
           </Grid>
-          <Grid item sm={4} xs={12}>
-            <AsideMenu />
-            <Footer className={classes.Navigation}/>
+          <Grid item sm={4} xs={12} >
+          <AsideMenu />
           </Grid>
           <Grid item sm={8} xs={12}>
             <div className={classes.Container}>
               {this.props.children}
             </div>
           </Grid>
-          <Footer mobile/>
+          <Grid item sm={4} xs={12}>
+          <Footer/>
+          </Grid>
+          <Grid item sm={8}></Grid>
         </Grid>
-       <Auth />
-      </div>  
-    );
-  }
-}
-
+        <Auth />
+       </div>  
+       );
+      }
+    }
+    
 export default Layout;

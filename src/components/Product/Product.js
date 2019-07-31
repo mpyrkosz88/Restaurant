@@ -21,6 +21,7 @@ class Product extends Component {
 
     showModal = () => {
         this.setState({ show: true });
+        console.log("kliknieto");
     }
 
     closeModal = () => {
@@ -30,7 +31,6 @@ class Product extends Component {
     render() {
         return (
             <ReactAux>
-
                 <Grid container alignItems="center" className={classes.ItemContainer} onClick={this.showModal}>
                     <Grid item xs={3}>
                         <figure><img src={this.props.imgUrl} alt="Dish" className={classes.Img} /> </figure>
@@ -46,15 +46,15 @@ class Product extends Component {
                 </Grid>
                 <Modal show={this.state.show} clicked={this.closeModal}>
                     <ModalProduct
-                        imgUrl={this.props.imgUrl} name={this.props.name} price={this.props.price} description={this.props.description} clicked={() => this.props.addToCart(this.props.id, this.props.price)} />
-                </Modal>
-                <Backdrop show={this.state.show} />
-            </ReactAux>
-        )
-    }
-}
-
-const mapStateToProps = (state, props) => {
+                    imgUrl={this.props.imgUrl} name={this.props.name} price={this.props.price} description={this.props.description} clicked={() => this.props.addToCart(this.props.id, this.props.price)} />
+                    </Modal>
+                    <Backdrop show={this.state.show}/>
+                </ReactAux>
+                )
+            }
+        }
+        
+        const mapStateToProps = (state, props) => {
     return {
         cart: state.cart.cart_items,
     }

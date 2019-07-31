@@ -2,18 +2,17 @@
   display: none;
   position: relative;
   width: 100%;
-  margin-bottom: 5px;
   .NavContainer {
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 25px 25px 0 0;
-    z-index: 500;
+    z-index: 100;
   }
   .NavMenu {
-    background-color: #1E1E1E;
     position: absolute;
+    background-color: #1E1E1E;
     left:10%;
     top:calc( 100% - 25px);
     transform-origin: 100% 0%;

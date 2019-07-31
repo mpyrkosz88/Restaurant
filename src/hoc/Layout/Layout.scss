@@ -1,11 +1,12 @@
 .Layout {
     background-image: url('./../../assets/images/background.webp');
+    min-height: 100vh;
     height: 100%;
     width: 100%;
-    position: fixed;
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    overflow-y: auto;
+    position: relative;
   }
 
   .Container {

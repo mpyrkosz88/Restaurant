@@ -20,7 +20,6 @@ class FullProduct extends Component {
         })
     }
     render() {
-        console.log(this.props);
         const data = this.props.data
         const firstPage = 1;
         const lastPage = data.length;
@@ -37,8 +36,6 @@ class FullProduct extends Component {
         let nextActive = true;
         let previousActive = true
         let fullscreenSize = 8
-        console.log(nextPage);
-        console.log(previousPage);
         this.state.fullscreen ? fullscreenSize = 12 : fullscreenSize = 8
 
         if (nextPage > lastPage) {
