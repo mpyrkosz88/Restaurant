@@ -74,7 +74,7 @@
     padding: 20px 40px;
     font-size: 16px;
     font-weight: bold;
-    margin: 40px;
+    margin: 0px;
     height: 68px;
 }
 
@@ -102,5 +102,9 @@
         font-weight: bold;
         margin: 10px;
         height: 68px;
+        width: 100%;
+    }
+    .SideDrawer {
+        height: auto;
     }
 }

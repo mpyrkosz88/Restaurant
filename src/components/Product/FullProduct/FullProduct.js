@@ -95,6 +95,9 @@ class FullProduct extends Component {
                                         <i className={"fas fa-chevron-right fa-3x"}></i>
                                     </NavLink>
                                 }
+                                <NavLink to={path}>
+                                <i className={classes.CloseButton + " fas fa-times fa-3x"}></i>
+                            </NavLink>
                             </Grid>
                         </Grid>
                         {!this.state.fullscreen ?

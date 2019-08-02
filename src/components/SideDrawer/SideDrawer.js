@@ -45,9 +45,8 @@ const sideDrawer = (props) => {
                         
                     </Grid>
                     <Grid container justify="space-between">
-                    <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
-                    <button className={classes.Button}>Order Now</button>
-                    
+                     <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
+                     <button className={classes.Button}>Order Now</button>
                     </Grid>
                 </Grid>
             </div>

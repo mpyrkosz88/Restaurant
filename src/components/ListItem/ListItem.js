@@ -11,10 +11,6 @@ const listItem = (props) => {
             <NavLink to={props.match.url + '/' + props.id}>
                 <img src={props.imgUrl} alt="Restaurant Gallery" />
                 <div className={classes.ListItemBackground}>
-                    <div className={classes.Likes}>
-                        <i className="fas fa-heart fa-2x"></i>
-                        <span>{props.likes}</span>
-                    </div>
                 </div>
             </NavLink>
         </div>
@@ -22,3 +18,8 @@ const listItem = (props) => {
 }
 
 export default listItem
+
+// <div className={classes.Likes}>
+// <i className="fas fa-heart fa-2x"></i>
+// <span>{props.likes}</span>
+// </div>
