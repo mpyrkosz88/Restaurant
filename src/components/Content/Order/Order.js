@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from "./Order.scss";
 
 //components
-import Product from '../../Product/Product'
+import Product from '../../../containers/Product/Product'
 import dataBase from '../../../assets/data/Menu/dataBase';
 
 class Order extends Component {

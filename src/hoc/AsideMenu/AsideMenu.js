@@ -3,12 +3,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 
 //components
-import Home from '../../Aside/Home/Home';
-import Restaurant from '../../Aside/Restaurant/Restaurant';
-import Bar from '../../Aside/Bar/Bar';
-import Menu from '../../Aside/Menu/Menu';
-import Order from '../../Aside/Order/Order';
-import Contact from '../../Aside/Contact/Contact';
+import Order from '../../containers/Order/Order';
+import Aside from '../../components/Aside/Aside';
 
 //styles
 import classes from './AsideMenu.scss';
@@ -22,12 +18,12 @@ class AsideMenu extends Component {
     return (
       <ReactAux>
         <div className={classes.AsideMenu}>
-          <Route path={'/home'} component={Home} />
-          <Route path={'/restaurant'} component={Restaurant} />
-          <Route path={'/bar'} component={Bar} />
-          <Route path={'/menu'} component={Menu} />
+          <Route path={'/home'} component={Aside} />
+          <Route path={'/restaurant'} component={Aside} />
+          <Route path={'/bar'} component={Aside} />
+          <Route path={'/menu'} component={Aside} />
           <Route path={'/order'} component={Order} />
-          <Route path={'/contact'} component={Contact} />
+          <Route path={'/contact'} component={Aside} />
         </div>
       </ReactAux>
     );

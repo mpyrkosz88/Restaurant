@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './Order.scss';
-import OrderMenu from './OrderMenu/OrderMenu';
-import OrderCart from './OrderCart/OrderCart';
-import SideDrawer from '../../components/SideDrawer/SideDrawer';
+import OrderMenu from '../../components/Aside/Order/OrderMenu/OrderMenu';
+import OrderCart from '../../components/Aside/Order/OrderCart/OrderCart';
+import SideDrawer from '../SideDrawer/SideDrawer';
 
 import dataBase from '../../assets/data/Menu/dataBase';
 
@@ -36,7 +36,7 @@ class Order extends Component {
                         <p>My Order</p>
                         <span>{this.props.quantity} items</span>
                     </div>
-                    <OrderCart />
+                    <OrderCart cart={this.props.cart} clicked={this.props.removeFromCart}/>
                     <div className={classes.OrderSummarize}>
                         <p>Subtotal</p>
                         <span>{this.props.price} zł</span>
@@ -51,6 +51,7 @@ class Order extends Component {
 
 const mapStateToProps = (state, props) => {
     return {
+        cart: state.cart.cart_items,
         price: state.cart.price,
         quantity: state.cart.cart_quantity,
         sidedrawer: state.cart.sideDrawerIsOpen,
@@ -60,7 +61,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = dispatch => {
     return {
         openSideDrawer: () => dispatch({ type: actionTypes.OPEN_SIDEDRAWER}),
-        closeSideDrawer: () => dispatch({type: actionTypes.CLOSE_SIDEDRAWER})
+        closeSideDrawer: () => dispatch({type: actionTypes.CLOSE_SIDEDRAWER}),
+        removeFromCart: (id, price, quantity) => dispatch({ type: actionTypes.CART_REMOVE, payload: { id, price, quantity } })
     }
 }
 

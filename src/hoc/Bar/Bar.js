@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 
 //components
-import FullProduct from '../components/Product/FullProduct/FullProduct'
+import FullProduct from '../../components/Product/FullProduct/FullProduct'
 
 //hoc
-import ReactAux from '../hoc/ReactAux/ReactAux'
+import ReactAux from '../ReactAux/ReactAux'
 
 //database
-import dataBase from '../assets/data/Restaurant/dataBase';
+import dataBase from '../../assets/data/Restaurant/dataBase';
 
 class BarContainer extends Component {
     render() {

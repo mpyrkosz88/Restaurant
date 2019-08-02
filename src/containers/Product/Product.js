@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
-import Modal from './../UI/Modal/Modal';
-import ModalProduct from './ModalProduct/ModalProduct';
+import Modal from '../../components/UI/Modal/Modal';
+import ModalProduct from '../../components/Product/ModalProduct/ModalProduct';
 import ReactAux from '../../hoc/ReactAux/ReactAux';
 
-import Backdrop from './../UI/Backdrop/Backdrop'
+import Backdrop from '../../components/UI/Backdrop/Backdrop'
 
 //classes
 import classes from './Product.scss';

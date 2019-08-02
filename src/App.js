@@ -15,8 +15,8 @@ import Order from './components/Content/Order/Order';
 import Contact from './components/Content/Contact/Contact';
 
 //containers
-import RestaurantContainer from './containers/RestaurantContainer';
-import BarContainer from './containers/BarContainer';
+import RestaurantContainer from './hoc/Restaurant/Restaurant';
+import BarContainer from './hoc/Bar/Bar';
 
 class App extends Component {
 
@@ -46,4 +46,4 @@ class App extends Component {
 
 export default App;
 
-// przeniesc Product do container oraz Order z Aside. Z OrderCart zmienic komponent zeby w Order bylo dodawanie do koszyka. SideDrawe również do container
+// SideDrawe również do container

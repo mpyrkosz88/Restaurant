@@ -179,7 +179,6 @@ class Auth extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    console.log(controlName);
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
@@ -211,7 +210,6 @@ class Auth extends Component {
       });
 
     }
-    console.log(formElementsArray);
 
     let form = (
       <form onSubmit={this.submitHandler}>
@@ -266,7 +264,6 @@ class Auth extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state.auth);
   return {
     modalIsOpen: state.auth.modalIsOpen,
   }
