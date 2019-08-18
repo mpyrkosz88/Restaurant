@@ -53,6 +53,15 @@
     }
 }
 
+.OrderContainerNoLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 36px;
+    }
+}
+
 .OrderList {
     display: flex;
     flex-flow: column;

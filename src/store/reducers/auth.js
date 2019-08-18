@@ -2,12 +2,15 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     modalIsOpen: false,
+    idToken: null,
+    userId: null,
+    error: null,
+    isLogin: false,
 }
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.OPEN_MODAL: 
-        console.log(state);
         return {
             ...state,
             modalIsOpen: true,
@@ -17,6 +20,26 @@ const auth = (state = initialState, action) => {
             ...state,
             modalIsOpen: false,
         }
+        case actionTypes.AUTH_SUCCESS:
+        return {
+          ...state,
+          modalIsOpen: false,
+          isLogin: true,
+          idToken: action.idToken,
+          userId: action.userId,
+        }
+        case actionTypes.AUTH_FAIL: 
+        return {
+          ...state,
+          error: action.error
+        }
+        case actionTypes.AUTH_LOGOUT:
+          return {
+            ...state,
+            idToken: null,
+            userId: null,
+            isLogin:false,
+          }
         default:
             return state;
     }

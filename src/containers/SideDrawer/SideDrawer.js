@@ -26,29 +26,42 @@ const sideDrawer = (props) => {
             )
         })}
 
+let order =                 <Grid container justify="center" style={{ height: "100%"}}>
+<Grid item sm={12} xs={12} className={classes.OrderContainer}>
+    <div className={classes.OrderTitle}>
+        <h5>My Order</h5>
+        <span>{props.quantity}</span>
+    </div>
+    <ul className={classes.OrderList}>
+        {summarize}
+    </ul>
+    <div className={classes.OrderSummarize}>
+        <h5>Total</h5>
+        <span className={classes.OrderSummarizePrice}>{props.price} zł</span>
+    </div>
+    
+</Grid>
+<Grid container justify="space-between">
+ <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
+ <button className={classes.Button}>Order Now</button>
+ 
+</Grid>
+</Grid>
+
+if (!props.isLogin) {
+    order = 
+    <Grid container justify="center" style={{ height: "100%"}}>
+    <Grid item sm={12} xs={12} className={classes.OrderContainerNoLogin}>
+            <p>You need to log In to continue </p>   
+    </Grid>
+     <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
+    </Grid>
+}
+
     return (
         <ReactAux>
             <div className={SideDrawerClasses.join(' ')}>
-                <Grid container justify="center" style={{ height: "100%"}}>
-                    <Grid item sm={12} xs={12} className={classes.OrderContainer}>
-                        <div className={classes.OrderTitle}>
-                            <h5>My Order</h5>
-                            <span>{props.quantity}</span>
-                        </div>
-                        <ul className={classes.OrderList}>
-                            {summarize}
-                        </ul>
-                        <div className={classes.OrderSummarize}>
-                            <h5>Total</h5>
-                            <span className={classes.OrderSummarizePrice}>{props.price} zł</span>
-                        </div>
-                        
-                    </Grid>
-                    <Grid container justify="space-between">
-                     <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
-                     <button className={classes.Button}>Order Now</button>
-                    </Grid>
-                </Grid>
+                {order}
             </div>
         </ReactAux>
     );
@@ -58,7 +71,9 @@ const mapStateToProps = (state, props) => {
     return {
         price: state.cart.price,
         quantity: state.cart.cart_quantity,
-        cart: state.cart.cart_items
+        cart: state.cart.cart_items,
+        isLogin: state.auth.isLogin,
+        
     }
 }
 

@@ -3,7 +3,6 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-
 //styles
 import classes from './TopNav.scss';
 //components
@@ -11,6 +10,7 @@ import NavItem from '../NavItem/NavItem';
 import Logo from '../Logo/Logo';
 
 import * as actionTypes from '../../../store/actions/actionTypes';
+import * as actions from '../../../store/actions/auth';
 
 const top_navigation = (props) => (
   <nav className={classes.Navigation}>
@@ -47,9 +47,15 @@ const top_navigation = (props) => (
           active={classes.Active}>
           Contact
         </NavItem>
+        {props.isLogin ?       
+          <li>
+          <i className="fas fa-sign-out-alt fa-2x" onClick={() => props.logOut()}></i>
+        </li> 
+        :
         <li>
           <i className="fas fa-user-circle fa-2x" onClick={() => props.showModal()}></i>
         </li>
+        }
       </ul>
     </Grid>
   </nav>
@@ -57,14 +63,17 @@ const top_navigation = (props) => (
 
 
 const mapStateToProps = (state, props) => {
+  console.log(state);
   return {
-    modalIsOpen: state.auth.modalIsOpen
+    modalIsOpen: state.auth.modalIsOpen,
+    isLogin:state.auth.isLogin
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    showModal: () => dispatch({ type: actionTypes.OPEN_MODAL })
+    showModal: () => dispatch({ type: actionTypes.OPEN_MODAL }),
+    logOut: () => dispatch(actions.logout())
   }
 }
 

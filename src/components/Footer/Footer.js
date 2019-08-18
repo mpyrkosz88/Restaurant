@@ -20,7 +20,7 @@ const footer = () => {
                 <a href=""><img src={Instagram} alt="Instagram" /></a>
             </div>
             <p className={classes.SecondText}>© 2023 Alex G. Restaurant. Proudly </p>
-            <p className={classes.SecondText}>created with <a href="http:\\www.wix.com">Wix.com</a></p>
+            <p className={classes.SecondText}>created with</p>
         </div>
     )
 }

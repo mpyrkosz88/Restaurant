@@ -1,6 +1,7 @@
 //libraries
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import {connect} from 'react-redux';
 
 //hoc
 import ReactAux from './hoc/ReactAux/ReactAux';
@@ -18,8 +19,12 @@ import Contact from './components/Content/Contact/Contact';
 import RestaurantContainer from './hoc/Restaurant/Restaurant';
 import BarContainer from './hoc/Bar/Bar';
 
-class App extends Component {
+import * as actions from './store/actions/auth';
 
+class App extends Component {
+  componentDidMount () {
+    this.props.onTryAutoSignup();
+  }
   render() {
     return (
       <ReactAux>
@@ -44,6 +49,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    isLogin: state.auth.isLogin
+    }
+}
 
-// SideDrawe również do container
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

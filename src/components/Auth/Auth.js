@@ -10,10 +10,12 @@ import ReactAux from '../../hoc/ReactAux/ReactAux';
 import classes from './Auth.scss';
 
 import * as actionTypes from '../../store/actions/actionTypes';
+import * as actions from '../../store/actions/auth';
 
 class Auth extends Component {
 
   state = {
+    formIsValid: false,
     login: true,
     controls: {
       email: {
@@ -51,6 +53,7 @@ class Auth extends Component {
 
   changeToRegister = () => {
     this.setState({
+      formIsValid: false,
       login: false,
       controls: {
         email: {
@@ -103,7 +106,7 @@ class Auth extends Component {
           elementConfig: {
             type: 'tel',
             placeholder: 'Enter your phone number',
-            maxlength:"9",
+            maxLength:"9",
           },
           value: '',
           errormsg: 'Minimal length of number is 9',
@@ -114,12 +117,13 @@ class Auth extends Component {
           valid: false,
           touched: false
         }
-      }
+      },
     })
   }
 
   changeToLogin = () => {
     this.setState({
+      formIsValid: false,
       login: true,
       controls: {
         email: {
@@ -152,7 +156,7 @@ class Auth extends Component {
           valid: false,
           touched: false
         },
-      }
+      },
     })
   }
 
@@ -178,6 +182,7 @@ class Auth extends Component {
     return isValid;
   }
 
+
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
       ...this.state.controls,
@@ -188,20 +193,22 @@ class Auth extends Component {
         touched: true
       }
     }
+    
+    let formIsValid = true;
+    for (let inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+    this.setState({ controls: updatedControls, formIsValid: formIsValid})
 
-    // let formIsValid = true;
-    // for (let inputIdentifier in updatedControls) {
-    //   formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
-    // }
-
-    this.setState({ controls: updatedControls, })
   }
 
   submitHandler = (event) => {
     event.preventDefault();
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.login)
   }
 
   render() {
+
     const formElementsArray = [];
     for (let key in this.state.controls) {
       formElementsArray.push({
@@ -210,11 +217,20 @@ class Auth extends Component {
       });
 
     }
+    
+    let errorMessage = null;
+      console.log(this.props);
+    if (this.props.error) {
+      errorMessage = (
+        <p className={classes.Error}>{this.props.error.message}</p>
+      )
+    }
 
     let form = (
       <form onSubmit={this.submitHandler}>
-        {formElementsArray.map(formElement => (
-          <Input
+        {formElementsArray.map(formElement => {
+          return (
+            <Input
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
@@ -224,17 +240,24 @@ class Auth extends Component {
             touched={formElement.config.touched}
             changed={(event) => this.inputChangedHandler(event, formElement.id)}
             errormsg={formElement.config.errormsg} />
-        ))}
-
+          )
+        }
+        )}
+          
         {
           this.state.login ?
-            <div className={classes.ButtonContainer}>
-              <button>Log In</button>
+          <div className={classes.ButtonContainer}>
+          {errorMessage}
+            {this.state.formIsValid ? <button>Log In </button> :
+            <button disabled>Log In
+            </button> }
               <p>If you dont have account <span onClick={this.changeToRegister}>click here</span> to register</p>
             </div>
             :
             <div className={classes.ButtonContainer}>
-              <button>Register</button>
+            {this.state.formIsValid ? <button>Register </button> :
+              <button disabled>Register
+              </button> }
               <p>If you already have account <span onClick={this.changeToLogin}>click here</span> to login</p>
             </div>
         }
@@ -242,13 +265,6 @@ class Auth extends Component {
       </form>
     )
 
-    // let errorMessage = null;
-    //   console.log(this.props);
-    // if (this.props.error) {
-    //   errorMessage = (
-    //     <p>{this.props.error.message}</p>
-    //   )
-    // }
 
     return (
       <ReactAux>
@@ -266,12 +282,14 @@ class Auth extends Component {
 const mapStateToProps = (state, props) => {
   return {
     modalIsOpen: state.auth.modalIsOpen,
+    error:state.auth.error
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL })
+    closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
+    onAuth: (email, password, login) => dispatch(actions.auth(email, password, login)),
   }
 }
 

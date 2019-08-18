@@ -13,7 +13,6 @@ const aside = (props) => {
         <div className={classes.Aside}>
         {dataBase[url].map((data, index) => {
             let paragraphClass = data.paragraph.className;
-            console.log(data);
             return (
                 <ReactAux key={index}>
                     {data.header ? <h4>{data.header}</h4> : null}   

@@ -17,8 +17,8 @@
     flex-flow: column;
     margin-top: 10px;
     button {
-        background-color: #EAEAEA;
-        color: black;
+        // background-color: #EAEAEA;
+        // color: black;
         text-transform: uppercase;
         padding: 10px;
         border: none;
@@ -26,9 +26,21 @@
         font-weight: bold;
         width: 50%;
         margin: 20px auto;
+        background-color: rgba(51, 51, 51, 1);
+        color:rgb(220, 212, 212);
     }
+
+    button:disabled {
+        background-color: rgb(220, 212, 212);
+        color: rgba(51, 51, 51, 0.2)
+      }
+      
     span {
         cursor: pointer;
         color: rgb(150, 150, 150);
     }
   }
+.Error {
+    color: red;
+    text-transform: lowercase;
+}
