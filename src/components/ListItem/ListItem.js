@@ -18,8 +18,3 @@ const listItem = (props) => {
 }
 
 export default listItem
-
-// <div className={classes.Likes}>
-// <i className="fas fa-heart fa-2x"></i>
-// <span>{props.likes}</span>
-// </div>

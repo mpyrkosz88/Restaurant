@@ -63,7 +63,6 @@ const top_navigation = (props) => (
 
 
 const mapStateToProps = (state, props) => {
-  console.log(state);
   return {
     modalIsOpen: state.auth.modalIsOpen,
     isLogin:state.auth.isLogin

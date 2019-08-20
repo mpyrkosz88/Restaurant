@@ -3,20 +3,23 @@ import React, { Component } from 'react';
 import classes from "./Bar.scss";
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import { connect } from 'react-redux';
 
 //components
 import ListItem from '../../ListItem/ListItem';
 
-//images
-import dataBase from '../../../assets/data/Restaurant/dataBase';
+import * as actions from '../../../store/actions/dataBase';
 
 class Bar extends Component {
+  componentDidMount () {
+    this.props.loadData()
+  }
   render() {
-    const data = dataBase.Bar;
     return (
       <section className={classes.Bar}>
+      {this.props.data ? 
         <GridList cellHeight={'auto'} cols={2} spacing={16}>
-          {data.map((index) => {
+          {this.props.data.map((index) => {
             return (
               <GridListTile key={index.id}>
                 <ListItem
@@ -32,9 +35,25 @@ class Bar extends Component {
           )
           }
         </GridList>
+        :
+        null
+      }
       </section>
     )
   }
 }
 
-export default Bar;
+const mapStateToProps = (state, props) => {
+  return {
+      data: state.dataBase.barData
+  }
+}  
+
+const mapDispatchToProps = dispatch => {
+  return {
+      loadData: () => dispatch(actions.initBarData()),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bar)

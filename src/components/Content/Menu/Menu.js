@@ -1,22 +1,26 @@
 //libraries
 import React, { Component } from 'react';
 import classes from "./Menu.scss";
+import { connect } from 'react-redux';
 
-//components
-import data from '../../../assets/data/Menu/dataBase';
-import ReactAux from '../../../hoc/ReactAux/ReactAux';
+import * as actions from '../../../store/actions/dataBase';
 
 class Menu extends Component {
+
+  componentDidMount () {
+    this.props.loadData()
+  }
+  
   render() {
     return (
-      <ReactAux>
         <section className={classes.Menu}>
-          {Object.keys(data).map((header, index) => {
+        {this.props.data ?
+          Object.keys(this.props.data).map((header, index) => {
             return (
               <div key={index}>
                 <h3 key={index}>{header}</h3>
                 {
-                  data[header].map((name) => {
+                  this.props.data[header].map((name) => {
                     return (
                       Object.keys(name).map((header, index) => {
                         return <ul key={index}>
@@ -24,7 +28,7 @@ class Menu extends Component {
                             <h4>{header}</h4>
                             <ul>
                               {
-                                name[header].map((product, index) => {
+                                name[header].map((product, index) => { 
                                   return (
                                     <li key={index}>
                                       <div className={classes.Item}>
@@ -43,10 +47,25 @@ class Menu extends Component {
                   })}
               </div>
             )
-          })}
+          })
+          : null
+        }
         </section>
-      </ReactAux>
     )
   }
 }
-export default Menu;
+
+const mapStateToProps = (state, props) => {
+  return {
+      data: state.dataBase.menuData
+  }
+}  
+
+const mapDispatchToProps = dispatch => {
+  return {
+      loadData: () => dispatch(actions.initMenuData()),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)

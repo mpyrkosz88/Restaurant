@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import Modal from '../UI/Modal/Modal';
 import Backdrop from '../UI/Backdrop/Backdrop';
@@ -219,7 +218,6 @@ class Auth extends Component {
     }
     
     let errorMessage = null;
-      console.log(this.props);
     if (this.props.error) {
       errorMessage = (
         <p className={classes.Error}>{this.props.error.message}</p>

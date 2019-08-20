@@ -1,0 +1,140 @@
+{
+  "Breakfast": [
+    {
+      "Mains": [
+        {
+          "id": 7,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fjajecznica.jpg?alt=media&token=5fe9694c-8c48-4991-8ad9-c944589c9dbc",
+          "likes": "5",
+          "price": 11,
+          "product_name": "Fried eggs",
+          "description": "Fried eggs with butter"
+        },
+        {
+          "id": 8,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fomlet_1.jpg?alt=media&token=6cc847bf-15c8-4a10-b64a-4a21a6b4dbe8",
+          "likes": "7",
+          "price": 12,
+          "product_name": "Omelette",
+          "description": "Omelette with onion",
+          "special": "true"
+        },
+        {
+          "id": 9,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fomlet_2.jpg?alt=media&token=e4d0d357-debf-402e-b876-9ed7bf51cc04",
+          "likes": "2",
+          "price": 13,
+          "product_name": "Omelette with ham",
+          "description": "Omelette with onion and ham"
+        },
+        {
+          "id": 17,
+          "imgUrl":"https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Ftosty.jpg?alt=media&token=7a8cfc88-5a0c-4994-b8f7-2e3403a07ea5",
+          "likes": "2",
+          "price": 9,
+          "product_name": "Toast",
+          "description": "Toast with cheese, mushrooms and basil leaves"
+        }
+      ]
+    },
+    {
+      "Sandwiches": [
+        {
+          "id": 1,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fham_sandwich.jpg?alt=media&token=a14bee6c-d36a-4af8-8206-faa9e2d3b5c9",
+          "price": 6,
+          "product_name": "Sandwich with ham",
+          "description": "Handmade bread with salad, ham and butter"
+        },
+        {
+          "id": 2,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fchicken_sandwich.jpg?alt=media&token=79a6525d-8d14-4c39-b530-71f68d9ca168",
+          "likes": "1",
+          "price": 7,
+          "product_name": "Sandwich with chicken",
+          "description": "Handmade bread with chicken, salad and tomato"
+        },
+        {
+          "id": 3,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Breakfast%2Fcheese_sandwich.jpg?alt=media&token=fadaa68a-2db4-4aa1-9605-fb0480ef7fdd",
+          "likes": "2",
+          "price": 4,
+          "product_name": "Sandwich with cheese",
+          "description": "Handmade bread with cheese and salad",
+          "special": "true"
+        }
+      ]
+    }
+  ],
+  "Lunch": [
+    {
+      "Starters": [
+        {
+          "id": 10,
+          "imgUrl":"https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant2.webp?alt=media&token=7647f97c-0039-445a-8956-fb2f296e2bab",
+          "price": 10,
+          "product_name": "Asparagus",
+          "description": "Our famous asparagus, with olive oil & balsamic vinegar"
+        },
+        {
+          "id": 11,
+          "imgUrl":"https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant3.webp?alt=media&token=8b397826-5a53-4eed-9c29-2e566bc266e0",
+          "likes": "1",
+          "price": 9,
+          "product_name": "Organic Spinach Salad",
+          "description": "Organic spinach salad, sprinkled with parmesan & pine nuts"
+        },
+        {
+          "id": 12,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant5.webp?alt=media&token=e8fd42cc-6c1e-41bd-a571-5a5d8a5675d8",
+          "likes": "2",
+          "price": 18,
+          "product_name": "Shrimps",
+          "description": "Shrimps with olive oil and salad",
+          "special": "true"
+        }
+      ]
+    },
+    {
+      "Mains": [
+        {
+          "id": 13,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant4.webp?alt=media&token=bc6de9fe-c125-46b2-88ed-bfe1baa37050",
+          "likes": "5",
+          "price": 23,
+          "product_name": "Prawn shrimps",
+          "description": "Shrimps with fresh garlic, herbs & cheese, topped with basil"
+        },
+        {
+          "id": 14,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant6.webp?alt=media&token=5b0ebca0-af2c-4118-bc4c-b0cdac3d335b",
+          "likes": "7",
+          "price": 16,
+          "product_name": "Pumpkin ravioli",
+          "description": "Handmade pumpkin ravioli, tossed in sage brown butter sauce with parmesan",
+          "special": "true"
+        },
+        {
+          "id": 15,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant7.webp?alt=media&token=ca5f238e-3267-4cfc-a3c6-856a0acb9ecc",
+          "likes": "2",
+          "price": 13,
+          "product_name": "Gnocchi",
+          "description": "Potato filled gnocchi with mozzarella, fresh tomatoes & basil leaves"
+        }
+      ]
+    },
+    {
+      "Soups": [
+        {
+          "id": 16,
+          "imgUrl": "https://firebasestorage.googleapis.com/v0/b/restaurant-984e6.appspot.com/o/Restaurant%2FRestaurant8.jpg?alt=media&token=3dcb3b8d-4a94-4ca7-b34d-bb128f6e525b",
+          "likes": "8",
+          "price": 10,
+          "product_name": "Chicken soup with mushrooms",
+          "description": "Chicken soup with mushrooms, fresh garlic, herbs & cheese, topped with basil"
+        }
+      ]
+    }
+  ]
+}
