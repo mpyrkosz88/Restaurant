@@ -11,7 +11,6 @@ import dataBase from '../../assets/data/Restaurant/dataBase.json';
 
 class RestaurantContainer extends Component {
     render() {
-        console.log(dataBase);
         return (
             <ReactAux>
                 <FullProduct data={dataBase} match={this.props.match} />
