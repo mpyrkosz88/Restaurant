@@ -14,7 +14,7 @@
     color:rgba(255, 255, 255, 0.6);
     left:0%;
     top:50%;
-    z-index: 1000;
+    z-index: 90;
     cursor: pointer;
     line-height: 100%;
     transform: translateY(-50%);
@@ -29,7 +29,7 @@
     right:0%;
     top:50%;
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 90;
   }
 }
     .Left:hover, .Right:hover {
@@ -48,7 +48,7 @@
   right:0%;
   top:100%;
   transform: translateY(-50%);
-  z-index: 1000;
+  z-index: 90;
 }
 
 @media (max-width: 600px) {

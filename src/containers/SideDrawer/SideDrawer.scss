@@ -75,6 +75,16 @@
     }
 }
 
+.OrderContainerSummarize {
+display: flex;
+flex-flow: column;
+justify-content: center;
+align-items: center;
+h4{
+    margin-bottom: 32px;
+}
+}
+
 .Button {
     background-color: #1E1E1E;
     border: 1px solid #EAEAEA;

@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
-import products from './products';
+import products from '../actions/cart';
 
 const initialState = {
   cart_items: [],
@@ -7,6 +7,7 @@ const initialState = {
   price: 0,
   cart_quantity: 0,
   sideDrawerIsOpen: false,
+  orderDishes:false,
 }
 
 const addItem = (state, action) => {
@@ -69,6 +70,24 @@ const closeSidedrawer = (state, action) => {
   }
 }
 
+const orderDishes = (state, action) => {
+  return {
+    ...state,
+    orderDishes: action.orderDishes,
+  }
+}
+
+const finishOrder = (state, action) => {
+  return {
+    ...state,
+    cart_items: action.cart_items,
+    price: action.price,
+    cart_quantity: action.cart_quantity,
+    sideDrawerIsOpen: action.sideDrawerIsOpen,
+    orderDishes:action.orderDishes,
+  }
+}
+
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
@@ -80,6 +99,10 @@ const cart = (state = initialState, action) => {
       return openSidedrawer(state, action)
     case actionTypes.CLOSE_SIDEDRAWER:
       return closeSidedrawer(state, action)
+    case actionTypes.ORDER_DISHES:
+      return orderDishes(state, action)
+    case actionTypes.FINISH_ORDER:
+      return finishOrder(state, action)
     default:
       return state;
   }

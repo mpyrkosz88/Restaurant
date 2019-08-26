@@ -12,7 +12,7 @@ const footer = () => {
         <div className={classes.Footer}>
             <p>500 Terry Francois Street</p>
             <p>SF , CA  94158 </p>
-            <p>Open everyday 2pm to 12am</p>
+            <p>Open everyday 7am to 10pm</p>
             <div className={classes.Images}>
                 <a href=""><img src={Facebook} alt="facebook" /></a>
                 <a href=""><img src={Twitter} alt="Twitter" /></a>

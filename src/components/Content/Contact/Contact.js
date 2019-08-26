@@ -1,6 +1,7 @@
 //libraries
 import React, { Component } from 'react';
 import classes from "./Contact.scss";
+import axios from '../../../axios-orders';
 
 import Input from '../../UI/Input/Input';
 
@@ -70,10 +71,28 @@ class Contact extends Component {
 
     },
     formIsValid: false,
+    alertMessage:null,
 }
 
 submitHandler = ( event ) => {
   event.preventDefault();
+  const formData = {}
+  for (let Identifier in this.state.orderForm){
+      formData[Identifier] = this.state.orderForm[Identifier].value;
+  }
+  axios.post("/ContactMessages.json", formData)
+    .then(response => {
+      console.log(response);
+      this.setState({
+        alertMessage: "Thank you for your message"
+      })
+    })
+    .catch(error => {
+      console.log(error);
+      this.setState({
+        alertMessage: "Ups! Something went wrong. Your message is NOT sent"
+      })
+    })
 }
 
 checkValiditiy(value, rules) {
@@ -126,6 +145,23 @@ inputChangedHandler = (event, inputIdentifier) => {
   this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
 }
 
+closeAlert = () => { 
+  const updatedOrderForm = {
+    ...this.state.orderForm
+  }
+  for (let inputIdentifier in updatedOrderForm) {
+    updatedOrderForm[inputIdentifier].value = "";
+    updatedOrderForm[inputIdentifier].valid = false;
+    updatedOrderForm[inputIdentifier].touched = false
+  }
+
+  this.setState({
+    alertMessage: null,
+    formIsValid: false,
+    orderForm: updatedOrderForm,
+  })
+}
+
   render() {
 
     const formElementsArray = [];
@@ -156,13 +192,21 @@ inputChangedHandler = (event, inputIdentifier) => {
       </div>  
       </form>
     )
+
+    let alert = (
+      <div className={classes.Alert}>
+        <p>{this.state.alertMessage}</p>
+        <button onClick={this.closeAlert}> OK </button>
+      </div>
+    )
+
     return (
       <section className={classes.Contact}>
         <div>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326.029895284756!2d-122.38766379291398!3d37.7701533780285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7fc4fe7ace37%3A0xfa1746dd4faeb818!2s500+Terry+A+Francois+Blvd%2C+San+Francisco%2C+CA+94158%2C+Stany+Zjednoczone!5e0!3m2!1spl!2spl!4v1563448393990!5m2!1spl!2spl"></iframe>
         </div>
         <div>
-          {form}
+          {this.state.alertMessage ? alert : form }
         </div>
         </section>
     )

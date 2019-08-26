@@ -21,7 +21,6 @@ class Product extends Component {
 
     showModal = () => {
         this.setState({ show: true });
-        console.log("kliknieto");
     }
 
     closeModal = () => {

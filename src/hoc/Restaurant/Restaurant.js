@@ -7,13 +7,14 @@ import FullProduct from '../../components/Product/FullProduct/FullProduct'
 //hoc
 import ReactAux from '../../hoc/ReactAux/ReactAux'
 
-import dataBase from '../../assets/data/Restaurant/dataBase';
+import dataBase from '../../assets/data/Restaurant/dataBase.json';
 
 class RestaurantContainer extends Component {
     render() {
+        console.log(dataBase);
         return (
             <ReactAux>
-                <FullProduct data={dataBase.Restaurant} match={this.props.match} />
+                <FullProduct data={dataBase} match={this.props.match} />
             </ReactAux>
         )
     }

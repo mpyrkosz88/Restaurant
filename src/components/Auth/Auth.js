@@ -54,6 +54,7 @@ class Auth extends Component {
     this.setState({
       formIsValid: false,
       login: false,
+      registerSuccess: false,
       controls: {
         email: {
           elementType: 'input',
@@ -105,13 +106,15 @@ class Auth extends Component {
           elementConfig: {
             type: 'tel',
             placeholder: 'Enter your phone number',
-            maxLength:"9",
+            maxLength: "9",
+            pattern: "[0-9]{9}"
           },
           value: '',
-          errormsg: 'Minimal length of number is 9',
+          errormsg: 'Please type a proper number. Minimal length of number is 9',
           validation: {
             required: true,
-            minLength: 9
+            checkedNumber:true,
+            minLength: 9,
           },
           valid: false,
           touched: false
@@ -178,6 +181,10 @@ class Auth extends Component {
       isValid = !((value.indexOf('@', 1) == -1) || (value.indexOf('.', 1) == -1))
     }
 
+    if (rules.checkedNumber) {
+      isValid = !isNaN(value) && value.length >= rules.minLength
+    }
+
     return isValid;
   }
 
@@ -192,18 +199,20 @@ class Auth extends Component {
         touched: true
       }
     }
-    
+
     let formIsValid = true;
     for (let inputIdentifier in updatedControls) {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
-    this.setState({ controls: updatedControls, formIsValid: formIsValid})
+    this.setState({ controls: updatedControls, formIsValid: formIsValid })
 
   }
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.login)
+    this.state.login ?
+      this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+      : this.props.onRegister(this.state.controls.email.value, this.state.controls.password.value, this.state.controls.street.value, this.state.controls.number.value)
   }
 
   render() {
@@ -216,7 +225,7 @@ class Auth extends Component {
       });
 
     }
-    
+
     let errorMessage = null;
     if (this.props.error) {
       errorMessage = (
@@ -229,33 +238,34 @@ class Auth extends Component {
         {formElementsArray.map(formElement => {
           return (
             <Input
-            key={formElement.id}
-            elementType={formElement.config.elementType}
-            elementConfig={formElement.config.elementConfig}
-            value={formElement.config.value}
-            invalid={!formElement.config.valid}
-            shouldValidate={formElement.config.validation}
-            touched={formElement.config.touched}
-            changed={(event) => this.inputChangedHandler(event, formElement.id)}
-            errormsg={formElement.config.errormsg} />
+              key={formElement.id}
+              elementType={formElement.config.elementType}
+              elementConfig={formElement.config.elementConfig}
+              value={formElement.config.value}
+              invalid={!formElement.config.valid}
+              shouldValidate={formElement.config.validation}
+              touched={formElement.config.touched}
+              changed={(event) => this.inputChangedHandler(event, formElement.id)}
+              errormsg={formElement.config.errormsg} />
           )
         }
         )}
-          
+
         {
           this.state.login ?
-          <div className={classes.ButtonContainer}>
-          {errorMessage}
-            {this.state.formIsValid ? <button>Log In </button> :
-            <button disabled>Log In
-            </button> }
+            <div className={classes.ButtonContainer}>
+              {errorMessage}
+              {this.state.formIsValid ? <button>Log In </button> :
+                <button disabled>Log In
+            </button>}
               <p>If you dont have account <span onClick={this.changeToRegister}>click here</span> to register</p>
             </div>
             :
             <div className={classes.ButtonContainer}>
-            {this.state.formIsValid ? <button>Register </button> :
-              <button disabled>Register
-              </button> }
+              {errorMessage}
+              {this.state.formIsValid ? <button>Register </button> :
+                <button disabled>Register
+              </button>}
               <p>If you already have account <span onClick={this.changeToLogin}>click here</span> to login</p>
             </div>
         }
@@ -263,12 +273,24 @@ class Auth extends Component {
       </form>
     )
 
+    let registerSuccess = (
+      <ReactAux>
+        <div className={classes.ButtonContainer}>
+          <p className={classes.RegisterSuccess}>Register successful</p>
+          <button onClick={() => {
+            this.props.onRegisterSucces()
+            this.changeToLogin()
+          }}>OK</button>
+        </div>
+      </ReactAux>
+    )
+
 
     return (
       <ReactAux>
         <Modal show={this.props.modalIsOpen} clicked={this.props.closeModal} >
           <div className={classes.Auth}>
-            {form}
+            {this.props.registerSuccess ? registerSuccess : form}
           </div>
         </Modal>
         <Backdrop show={this.props.modalIsOpen} />
@@ -280,14 +302,18 @@ class Auth extends Component {
 const mapStateToProps = (state, props) => {
   return {
     modalIsOpen: state.auth.modalIsOpen,
-    error:state.auth.error
+    error: state.auth.error,
+    registerSuccess: state.auth.registerSuccess,
+    userData: state.auth.userData,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
-    onAuth: (email, password, login) => dispatch(actions.auth(email, password, login)),
+    onAuth: (email, password) => dispatch(actions.auth(email, password)),
+    onRegister: (email, password, street, number) => dispatch(actions.register(email, password, street, number)),
+    onRegisterSucces: () => dispatch({ type: actionTypes.CLOSE_REGISTER })
   }
 }
 

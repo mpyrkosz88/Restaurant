@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import ListItem from '../../ListItem/ListItem';
 
 //images
-import RestaurantImage from '../../../assets/images/Restaurant/Restaurant1.webp'
+import RestaurantImage from '../../../assets/images/Restaurant1.webp'
 import * as actions from '../../../store/actions/dataBase';
 
 class Restaurant extends Component {

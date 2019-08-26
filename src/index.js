@@ -21,7 +21,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //reducers
 
 import cart from './store/reducers/cart';
-import products from './store/reducers/products';
 import auth from './store/reducers/auth';
 import dataBase from './store/reducers/dataBase';
 
@@ -30,7 +29,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   cart: cart,
-  products: products,
   auth: auth,
   dataBase: dataBase
 })

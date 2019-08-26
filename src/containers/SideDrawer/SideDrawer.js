@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import classes from './SideDrawer.scss';
 import ReactAux from '../../hoc/ReactAux/ReactAux';
 
+import * as actions from '../../store/actions/cart';
+
 const sideDrawer = (props) => {
     let SideDrawerClasses = [classes.SideDrawer, classes.Close];
     if (props.show) {
@@ -26,7 +28,7 @@ const sideDrawer = (props) => {
             )
         })}
 
-let order =                 <Grid container justify="center" style={{ height: "100%"}}>
+let order = <Grid container justify="center" style={{ height: "100%"}}>
 <Grid item sm={12} xs={12} className={classes.OrderContainer}>
     <div className={classes.OrderTitle}>
         <h5>My Order</h5>
@@ -43,7 +45,7 @@ let order =                 <Grid container justify="center" style={{ height: "1
 </Grid>
 <Grid container justify="space-between">
  <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
- <button className={classes.Button}>Order Now</button>
+ <button className={classes.Button} onClick={()=>props.onOrderDishes(props.cart)}>Order Now</button>
  
 </Grid>
 </Grid>
@@ -55,6 +57,20 @@ if (!props.isLogin) {
             <p>You need to log In to continue </p>   
     </Grid>
      <button className={classes.Button + " " + classes.Arrow} onClick={props.clicked}>Back to Menu</button>
+    </Grid>
+}
+
+if (props.orderDishes && props.isLogin) {
+    order = 
+    <Grid container justify="center" style={{ height: "100%"}}>
+    <Grid item sm={12} xs={12} className={classes.OrderContainerSummarize}>
+            <h4>Thank for your order</h4>
+            <h5>Your contact number:</h5>
+            <p>{props.userData.number}</p>
+            <h5>Your dishes will be delivered to:</h5>
+            <p>{props.userData.street}</p>   
+    </Grid>
+     <button className={classes.Button} onClick={props.finishOrder}>Click to close</button>
     </Grid>
 }
 
@@ -73,10 +89,19 @@ const mapStateToProps = (state, props) => {
         quantity: state.cart.cart_quantity,
         cart: state.cart.cart_items,
         isLogin: state.auth.isLogin,
-        
+        orderDishes:state.cart.orderDishes,
+        userData:state.auth.userData
     }
 }
 
-export default connect(mapStateToProps)(sideDrawer);
+const mapDispatchToProps = dispatch => {
+    return {
+      onOrderDishes: (cart) => dispatch(actions.orderDishes(cart)),
+      finishOrder: () => dispatch(actions.finishOrder()),
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(sideDrawer);
+
 
 

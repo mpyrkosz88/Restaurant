@@ -6,10 +6,8 @@ import ReactAux from '../../hoc/ReactAux/ReactAux';
 import classes from './Aside.scss';
 
 import * as actions from '../../store/actions/dataBase';
-import axios from '../../axios-orders';
 
 class Aside extends Component {
-
     componentDidMount () {
         this.props.loadData();
     }
@@ -37,7 +35,7 @@ class Aside extends Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        asideData: state.dataBase.asideData
+        asideData: state.dataBase.asideData,
     }
   }  
 
@@ -48,4 +46,4 @@ const mapStateToProps = (state, props) => {
   }
   
 
-export default connect(mapStateToProps, mapDispatchToProps)(Aside, axios)
+export default connect(mapStateToProps, mapDispatchToProps)(Aside)

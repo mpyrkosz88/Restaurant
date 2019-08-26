@@ -6,13 +6,16 @@ import OrderMenu from '../../components/Aside/Order/OrderMenu/OrderMenu';
 import OrderCart from '../../components/Aside/Order/OrderCart/OrderCart';
 import SideDrawer from '../SideDrawer/SideDrawer';
 
-import dataBase from '../../assets/data/Menu/dataBase';
-
+import dataBase from '../../assets/data/Menu/dataBase.json';
 //actions
 import * as actionTypes from '../../store/actions/actionTypes';
+// import * as actions from '../../store/actions/dataBase';
 
 class Order extends Component {
 
+    // componentDidMount() {
+    //     this.props.loadData()
+    // }
     render() {
         let button = null
 
@@ -62,9 +65,8 @@ const mapDispatchToProps = dispatch => {
     return {
         openSideDrawer: () => dispatch({ type: actionTypes.OPEN_SIDEDRAWER}),
         closeSideDrawer: () => dispatch({type: actionTypes.CLOSE_SIDEDRAWER}),
-        removeFromCart: (id, price, quantity) => dispatch({ type: actionTypes.CART_REMOVE, payload: { id, price, quantity } })
+        removeFromCart: (id, price, quantity) => dispatch({ type: actionTypes.CART_REMOVE, payload: { id, price, quantity } }),
     }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Order)
-

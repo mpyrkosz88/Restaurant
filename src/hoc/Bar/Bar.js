@@ -7,17 +7,18 @@ import FullProduct from '../../components/Product/FullProduct/FullProduct'
 //hoc
 import ReactAux from '../ReactAux/ReactAux'
 
-//database
-import dataBase from '../../assets/data/Restaurant/dataBase';
+import dataBase from '../../assets/data/Bar/dataBase.json';
 
 class BarContainer extends Component {
+
     render() {
         return (
             <ReactAux>
-                <FullProduct data={dataBase.Bar} match={this.props.match} />
+                 <FullProduct data={dataBase} match={this.props.match}/>
             </ReactAux>
         )
     }
 }
-
-export default BarContainer;
+ 
+  
+  export default (BarContainer)
