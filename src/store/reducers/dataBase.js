@@ -6,6 +6,7 @@ const initialState = {
     restaurantData: null,
     menuData:null,
     dishesData: null,
+    sliderData:null,
 }
 
 const dataBase = (state = initialState, action) => {
@@ -29,6 +30,11 @@ const dataBase = (state = initialState, action) => {
         return {
             ...state,
             menuData: action.menuData,
+        }
+        case actionTypes.LOAD_SLIDER_DATA: 
+        return {
+            ...state,
+            sliderData: action.sliderData,
         }
         default:
             return state;

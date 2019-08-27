@@ -20,6 +20,7 @@ export const LOAD_ASIDE_DATA = "LOAD_ASIDE_DATA"
 export const LOAD_BAR_DATA = "LOAD_BAR_DATA"
 export const LOAD_RESTAURANT_DATA = "LOAD_RESTAURANT_DATA"
 export const LOAD_MENU_DATA = "LOAD_MENU_DATA"
+export const LOAD_SLIDER_DATA = "LOAD_SLIDER_DATA"
 
 //orders
 export const ORDER_DISHES = "ORDER_DISHES"

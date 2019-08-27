@@ -30,6 +30,13 @@ export const loadMenuData = (data) => {
   }
 }
 
+export const loadSliderData= (data) => {
+  return {
+    type: actionTypes.LOAD_SLIDER_DATA,
+    sliderData: data,
+  }
+}
+
 export const initAsideData = () => {
   return dispatch => {
     axios.get('https://restaurant-984e6.firebaseio.com/Aside.json')
@@ -71,6 +78,18 @@ export const initMenuData = () => {
     axios.get('https://restaurant-984e6.firebaseio.com/Menu.json')
       .then(response => {
         dispatch(loadMenuData(response.data))
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+}
+
+export const initSliderData = () => {
+  return dispatch => {
+    axios.get('https://restaurant-984e6.firebaseio.com/Slider.json')
+      .then(response => {
+        dispatch(loadSliderData(response.data))
       })
       .catch(error => {
         console.log(error);

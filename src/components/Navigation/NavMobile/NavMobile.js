@@ -1,5 +1,7 @@
 //libraries
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 //styles
 import classes from './NavMobile.scss';
 //components
@@ -7,6 +9,9 @@ import NavItem from '../NavItem/NavItem';
 import NavBtn from '../NavBtn//NavBtn';
 import Logo from '../Logo/Logo';
 
+//actions
+import * as actionTypes from '../../../store/actions/actionTypes';
+import * as actions from '../../../store/actions/auth';
 
 class NavMobile extends Component {
 
@@ -74,11 +79,21 @@ class NavMobile extends Component {
                 >
                 Contact
               </NavItem>
-              <li className={classes.SignIn}
-              onClick={this.toggleMobile}
-              >
-                Sign In
+              {this.props.isLogin ?       
+                <li className={classes.SignIn} onClick={() => {
+                  this.props.logOut()
+                  this.toggleMobile
+                   }}> Log Out
+                </li> 
+              :
+                <li className={classes.SignIn} onClick={() => {
+                  this.props.showModal()
+                  this.toggleMobile
+                  }}>
+                  Sign In
               </li>
+              }
+
             </ul>
           </div>
           <NavBtn clicked={this.toggleMobile} active={this.state.active} />
@@ -88,7 +103,19 @@ class NavMobile extends Component {
   }
 }
 
-export default NavMobile;
 
+const mapStateToProps = (state, props) => {
+  return {
+    modalIsOpen: state.auth.modalIsOpen,
+    isLogin:state.auth.isLogin
+  }
+}
 
+const mapDispatchToProps = dispatch => {
+  return {
+    showModal: () => dispatch({ type: actionTypes.OPEN_MODAL }),
+    logOut: () => dispatch(actions.logout())
+  }
+}
 
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavMobile))

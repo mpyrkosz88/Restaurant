@@ -1,6 +1,8 @@
+//lib
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { NavLink } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 //classes
 import classes from './FullProduct.scss';
@@ -19,8 +21,11 @@ class FullProduct extends Component {
             fullscreen: !this.state.fullscreen
         })
     }
+
     render() {
-        const data = this.props.data
+
+
+        const data = this.props.data;
         const firstPage = 1;
         const lastPage = data.length;
         const match = this.props.match

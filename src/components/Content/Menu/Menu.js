@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import classes from "./Menu.scss";
 import { connect } from 'react-redux';
 
+//components
+import Spinner from '../../UI/Spinner/Spinner';
+
+//actions
 import * as actions from '../../../store/actions/dataBase';
 
 class Menu extends Component {
@@ -48,7 +52,7 @@ class Menu extends Component {
               </div>
             )
           })
-          : null
+          : <Spinner />
         }
         </section>
     )

@@ -1,11 +1,16 @@
 //libraries
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
+//styles
 import classes from "./Slider.scss";
 
-import data from '../../../assets/data/Slider/data';
-
+//components
 import SliderItem from "./SliderItem/SliderItem";
+import Spinner from '../../UI/Spinner/Spinner';
 
+//actions
+import * as actions from '../../../store/actions/dataBase';
 
 class Slider extends Component {
   state = {
@@ -14,6 +19,7 @@ class Slider extends Component {
   }
   
   componentDidMount() {
+    this.props.loadData()
     this.startInterval()
   }
 
@@ -70,13 +76,15 @@ class Slider extends Component {
     else {
       playSymbol = "fa-play"
     }
+
     return (
       <section className={classes.Slider}>
         <i className={classes.Left + " fas fa-chevron-left fa-3x"} onClick= {this.changeSlideLeft}></i>
         <ul className={classes.SliderList} >
-          {data.map((index) => { 
+        {this.props.sliderData ? 
+          this.props.sliderData.map((index) => { 
             let background
-            if (this.state.number === index.id) {
+            if (this.state.number == index.id) {
                 background = true
               }
               else {
@@ -91,7 +99,9 @@ class Slider extends Component {
               )
              }
             )
-          }
+            :
+            <Spinner />
+        }
         </ul>
         <i className={classes.Right + " fas fa-chevron-right fa-3x"} onClick={this.changeSlide}></i>
         <div className={classes.StopPlay}><i className={"fas " + playSymbol } onClick={this.startInterval}></i> <span>{this.state.number}/4 </span></div>
@@ -100,4 +110,17 @@ class Slider extends Component {
   }
 }
 
-export default Slider;
+const mapStateToProps = (state, props) => {
+  return {
+    sliderData: state.dataBase.sliderData
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadData: () => dispatch(actions.initSliderData()),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Slider)

@@ -9,6 +9,7 @@ import classes from './TopNav.scss';
 import NavItem from '../NavItem/NavItem';
 import Logo from '../Logo/Logo';
 
+//actions
 import * as actionTypes from '../../../store/actions/actionTypes';
 import * as actions from '../../../store/actions/auth';
 
