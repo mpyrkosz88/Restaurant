@@ -16,10 +16,25 @@ export const registerSuccess = () => {
 };
 
 export const authFail = (error) => {
-  return {
-    type: actionTypes.AUTH_FAIL,
-    error: error
-  };
+  switch (error.message) {
+    case "EMAIL_EXISTS":
+      return {
+        type: actionTypes.AUTH_FAIL,
+        error: "This email already exist"
+      }
+    case "EMAIL_NOT_FOUND":
+      return  {
+        type: actionTypes.AUTH_FAIL,
+        error: "Your email is not found"
+      }
+    case "INVALID_PASSWORD":
+      return  {
+        type: actionTypes.AUTH_FAIL,
+        error: "Your password is invalid"
+      }
+    default:
+      return error;
+  }
 };
 
 export const logout = () => {
@@ -106,7 +121,7 @@ export const auth = (email, password)  => {
           dispatch(getAddress(response.data.idToken, response.data.localId))
         })
         .catch(err=>{
-          console.log(err);
+          console.log(err.response.data.error);
           dispatch(authFail(err.response.data.error));
         })
   };
