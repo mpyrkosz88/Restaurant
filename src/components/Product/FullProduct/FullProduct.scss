@@ -9,7 +9,7 @@ $PriceName: #CF8E67;
     background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
-    z-index: 200;
+    z-index: 400;
     left: 0;
     top: 0;
     
@@ -37,7 +37,7 @@ $PriceName: #CF8E67;
 
     .ProductImg {
         width: 100%;
-        height: 100vh;
+
         display: flex;
         margin: 0;
         img {
@@ -64,5 +64,11 @@ $PriceName: #CF8E67;
         transition: 0.5s;
         cursor: pointer;
         
+    }
+}
+
+@media (min-width: 601px) {
+    .ProductImg {
+        height: 100vh;
     }
 }
