@@ -259,7 +259,11 @@ class Auth extends Component {
               {this.state.formIsValid ? <button>Log In </button> :
                 <button disabled>Log In
             </button>}
-              <p>If you dont have account <span onClick={this.changeToRegister}>click here</span> to register</p>
+              <p>If you dont have account <span onClick={() => {
+                this.changeToRegister()
+                this.props.onLoginChange()
+              }
+            }>click here</span> to register</p>
             </div>
             :
             <div className={classes.ButtonContainer}>
@@ -267,7 +271,11 @@ class Auth extends Component {
               {this.state.formIsValid ? <button>Register </button> :
                 <button disabled>Register
               </button>}
-              <p>If you already have account <span onClick={this.changeToLogin}>click here</span> to login</p>
+              <p>If you already have account <span onClick={() => {
+                this.changeToLogin()
+                this.props.onLoginChange()
+              }
+            }>click here</span> to login</p>
             </div>
         }
 
@@ -281,6 +289,7 @@ class Auth extends Component {
           <button onClick={() => {
             this.props.onRegisterSucces()
             this.changeToLogin()
+            this.props.onLoginChange()
           }}>OK</button>
         </div>
       </ReactAux>
@@ -314,7 +323,8 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch({ type: actionTypes.CLOSE_MODAL }),
     onAuth: (email, password) => dispatch(actions.auth(email, password)),
     onRegister: (email, password, street, number) => dispatch(actions.register(email, password, street, number)),
-    onRegisterSucces: () => dispatch({ type: actionTypes.CLOSE_REGISTER })
+    onRegisterSucces: () => dispatch({ type: actionTypes.CLOSE_REGISTER }),
+    onLoginChange: () => dispatch({ type: actionTypes.LOGIN_CHANGE }),
   }
 }
 

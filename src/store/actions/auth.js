@@ -6,12 +6,14 @@ export const authSuccess = (token, userId) => {
     type: actionTypes.AUTH_SUCCESS,
     idToken: token,
     userId: userId,
+    error: null,
   };
 };
 
 export const registerSuccess = () => {
   return {
     type: actionTypes.REGISTER_SUCCESS,
+    error: null,
   };
 };
 

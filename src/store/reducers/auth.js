@@ -31,6 +31,7 @@ const authSuccess = (state, action) => {
     isLogin: true,
     idToken: action.idToken,
     userId: action.userId,
+    error: action.error
   }
 }
 
@@ -54,6 +55,7 @@ const registerSuccess = (state, action) => {
   return {
     ...state,
     registerSuccess: true,
+    error: action.error,
   }
 }
 
@@ -70,6 +72,13 @@ const getUserData = (state, action) => {
     ...state,
     registerSuccess: false,
     userData: action.userData,
+  }
+}
+
+const onLoginChange = (state, action) => {
+  return {
+    ...state,
+    error:null
   }
 }
 
@@ -91,6 +100,8 @@ const auth = (state = initialState, action) => {
       return closeRegiser(state, action)
     case actionTypes.GET_USER_DATA:
       return getUserData(state, action)
+      case actionTypes.LOGIN_CHANGE:
+        return onLoginChange(state, action)
     default:
       return state;
   }

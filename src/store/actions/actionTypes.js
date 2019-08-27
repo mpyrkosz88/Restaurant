@@ -14,6 +14,7 @@ export const AUTH_LOGOUT= 'AUTH_LOGOUT';
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const CLOSE_REGISTER = "CLOSE_REGISTER";
 export const GET_USER_DATA = "GET_USER_DATA";
+export const LOGIN_CHANGE = "LOGIN_CHANGE";
 
 //data
 export const LOAD_ASIDE_DATA = "LOAD_ASIDE_DATA"
