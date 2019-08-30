@@ -29,12 +29,13 @@ class NavMobile extends Component {
   render() {
 
     let showMenu = classes.Hide;
+    let showContainer = null;
     this.state.hide ? showMenu = classes.Hide : showMenu = classes.Show
-
-    return (
+    this.state.hide ? showContainer = null : showContainer = classes.ShowContainer
+     return (
       <nav className={classes.NavMobile}>
         <Logo />
-        <div className={classes.NavContainer}>
+        <div className={classes.NavContainer + " " + showContainer}>
           <div className={classes.NavMenu + " " + showMenu}>
             <ul>
               <NavItem
