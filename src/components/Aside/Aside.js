@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //hoc
-import ReactAux from '../../hoc/ReactAux/ReactAux';
+import ReactAux from '../ReactAux/ReactAux';
 
 //components
 import Spinner from '../UI/Spinner/Spinner';

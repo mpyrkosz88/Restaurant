@@ -7,7 +7,7 @@ import FullProduct from '../../components/Product/FullProduct/FullProduct'
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 //hoc
-import ReactAux from '../../hoc/ReactAux/ReactAux'
+import ReactAux from '../../components/ReactAux/ReactAux'
 
 //styles
 import classes from './Bar.scss'

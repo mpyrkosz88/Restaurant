@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '../UI/Modal/Modal';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import Input from '../../components/UI/Input/Input';
-import ReactAux from '../../hoc/ReactAux/ReactAux';
+import ReactAux from '../ReactAux/ReactAux';
 
 import classes from './Auth.scss';
 

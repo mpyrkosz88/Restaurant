@@ -1,7 +1,7 @@
 //libraries
 import React from 'react';
 //components
-import ReactAux from '../../hoc/ReactAux/ReactAux';
+import ReactAux from '../ReactAux/ReactAux';
 import TopNav from './TopNav/TopNav';
 import NavMobile from './NavMobile/NavMobile';
 

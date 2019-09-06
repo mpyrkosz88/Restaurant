@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactAux from '../../../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../../ReactAux/ReactAux';
 import classes from './OrderCart.scss';
 
 const orderCart = (props) => {

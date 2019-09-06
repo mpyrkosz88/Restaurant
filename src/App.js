@@ -3,21 +3,19 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux';
 
-//hoc
-import ReactAux from './hoc/ReactAux/ReactAux';
-import Layout from './hoc/Layout/Layout';
+//containers
+import Layout from './containers/Layout/Layout';
+import RestaurantContainer from './containers/Restaurant/Restaurant';
+import BarContainer from './containers/Bar/Bar';
 
 //components
+import ReactAux from './components/ReactAux/ReactAux';
 import Slider from './components/Content/Slider/Slider';
 import Restaurant from './components/Content/Restaurant/Restaurant';
 import Bar from './components/Content/Bar/Bar';
 import Menu from './components/Content/Menu/Menu';
 import Order from './components/Content/Order/Order';
 import Contact from './components/Content/Contact/Contact';
-
-//containers
-import RestaurantContainer from './hoc/Restaurant/Restaurant';
-import BarContainer from './hoc/Bar/Bar';
 
 import * as actions from './store/actions/auth';
 
@@ -39,7 +37,7 @@ class App extends Component {
             <Route path={'/order/:id'} component={Order} />
             <Route path={'/contact'} component={Contact} />
             </Switch>
-            </Layout>
+        </Layout>
         <Switch>
           <Route path={'/restaurant/:id'} component={RestaurantContainer} />
           <Route path={'/bar/:id'} component={BarContainer} />

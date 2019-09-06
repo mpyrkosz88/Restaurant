@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import classes from './Modal.scss';
-import ReactAux from '../../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../ReactAux/ReactAux';
 
 class Modal extends Component {
 

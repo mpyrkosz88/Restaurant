@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 import Modal from '../../components/UI/Modal/Modal';
 import ModalProduct from '../../components/Product/ModalProduct/ModalProduct';
-import ReactAux from '../../hoc/ReactAux/ReactAux';
-
+import ReactAux from '../../components/ReactAux/ReactAux';
 import Backdrop from '../../components/UI/Backdrop/Backdrop'
 
 //classes

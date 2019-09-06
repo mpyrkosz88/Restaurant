@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 
 //components
-import Order from '../../containers/Order/Order';
+import Order from '../Order/Order';
 import Aside from '../../components/Aside/Aside';
 
 //styles
@@ -11,7 +11,7 @@ import classes from './AsideMenu.scss';
 
 
 //hoc 
-import ReactAux from '../ReactAux/ReactAux';
+import ReactAux from '../../components/ReactAux/ReactAux';
 
 class AsideMenu extends Component {
   render() {

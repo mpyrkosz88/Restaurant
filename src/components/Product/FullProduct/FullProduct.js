@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './FullProduct.scss';
 
 //hoc
-import ReactAux from '../../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../ReactAux/ReactAux';
 
 class FullProduct extends Component {
 

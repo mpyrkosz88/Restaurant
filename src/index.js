@@ -26,6 +26,8 @@ import dataBase from './store/reducers/dataBase';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
+
+
 const rootReducer = combineReducers({
   cart: cart,
   auth: auth,

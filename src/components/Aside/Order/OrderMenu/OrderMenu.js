@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 //hoc
-import ReactAux from './../../../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../../ReactAux/ReactAux';
 
 //classes
 import classes from './OrderMenu.scss';

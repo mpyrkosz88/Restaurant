@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
 import classes from './SideDrawer.scss';
-import ReactAux from '../../hoc/ReactAux/ReactAux';
+import ReactAux from '../../components/ReactAux/ReactAux';
 
 import * as actions from '../../store/actions/cart';
 
