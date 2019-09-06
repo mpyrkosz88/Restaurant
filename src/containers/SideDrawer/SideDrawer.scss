@@ -11,45 +11,61 @@
 }
 
 .Open {
-    width: 294%;
+    width: calc(294% + 20px);
     padding: 50px;
+
+    div {
+        transition: opacity 0.3s ease-in;
+        opacity: 1;
+    }
 }
 
 .Close {
     padding: 0;
     width: 0;
     overflow: hidden;
-    border:none;
+    border: none;
+
+    div {
+        opacity: 0;
+    }
 }
-
-
 
 .OrderContainer {
     border: 1px solid #656565;
     height: calc(100% - 108px);
-    .OrderTitle, .OrderSummarize {
+
+    .OrderTitle,
+    .OrderSummarize {
         margin: 20px;
         padding-bottom: 20px;
         justify-content: space-between;
     }
+
     .OrderTitle {
         border-bottom: 1px solid #656565;
     }
+
     div {
         display: flex;
     }
+
     h5 {
-        margin:0;
+        margin: 0;
         font-size: 30px;
     }
-    span, p {
+
+    span,
+    p {
         font-size: 20px;
     }
-    p{ 
+
+    p {
         margin-left: 10px;
     }
+
     .OrderSummarizePrice {
-        font-size:30px;
+        font-size: 30px;
     }
 }
 
@@ -57,6 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     p {
         font-size: 36px;
     }
@@ -66,23 +83,25 @@
     display: flex;
     flex-flow: column;
     border-bottom: 1px solid #EAEAEA;
+
     li {
         margin: 0 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        
+
     }
 }
 
 .OrderContainerSummarize {
-display: flex;
-flex-flow: column;
-justify-content: center;
-align-items: center;
-h4{
-    margin-bottom: 32px;
-}
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    h4 {
+        margin-bottom: 32px;
+    }
 }
 
 .Button {
@@ -107,13 +126,14 @@ h4{
         width: 100%;
         padding: 50px;
     }
-    
+
     .Close {
         padding: 0;
         width: 0;
         overflow: hidden;
-        border:none;
+        border: none;
     }
+
     .Button {
         text-transform: uppercase;
         padding: 20px 20px;
@@ -123,6 +143,7 @@ h4{
         height: 68px;
         width: 100%;
     }
+
     .SideDrawer {
         height: auto;
     }

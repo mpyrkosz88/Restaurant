@@ -7,7 +7,7 @@
     top: 20%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
-    i {
+    .Button {
         box-sizing: border-box;
         background-color: black;
         border-radius: 16px;
@@ -19,8 +19,6 @@
     }
 
 }
-
-
 @media (min-width: 600px) {
     .Modal {
         width: 500px;

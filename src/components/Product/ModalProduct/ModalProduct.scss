@@ -29,5 +29,24 @@
         font-size: 16px;
         font-weight: bold;
     }
+    .QuantityContainer {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        p {
+            margin: 0;
+            text-transform: uppercase;
+        }
+    .Quantity {
+        i {
+            cursor: pointer
+        }
+        span {
+            margin: 0 10px;
+        }
+    }
+    }
 }
 

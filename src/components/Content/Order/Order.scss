@@ -1,6 +1,6 @@
 .Order {
   background-color: #1E1E1E;
-  width: 100%;
+  width: calc(100% + 20px);
   padding: 2rem;
   display: flex;
   flex-flow: column;

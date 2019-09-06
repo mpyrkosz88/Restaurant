@@ -25,7 +25,12 @@ class Product extends Component {
     closeModal = () => {
         this.setState({ show: false });
     }
-
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextState.show === this.state.show && nextState.show === true) {
+            this.setState({ show: false });
+        }
+        return nextState
+    }
     render() {
         return (
             <ReactAux>
@@ -44,15 +49,15 @@ class Product extends Component {
                 </Grid>
                 <Modal show={this.state.show} clicked={this.closeModal}>
                     <ModalProduct
-                    imgUrl={this.props.imgUrl} name={this.props.name} price={this.props.price} description={this.props.description} clicked={() => this.props.addToCart(this.props.id, this.props.price)} />
-                    </Modal>
-                    <Backdrop show={this.state.show}/>
+                    imgUrl={this.props.imgUrl} name={this.props.name} price={this.props.price} description={this.props.description} clicked={(quantity) => this.props.addToCart(this.props.id, this.props.price, quantity)} />
+                </Modal>
+                <Backdrop show={this.state.show}/>
                 </ReactAux>
                 )
             }
         }
         
-        const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, props) => {
     return {
         cart: state.cart.cart_items,
     }
@@ -60,7 +65,7 @@ class Product extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addToCart: (id, price) => dispatch({ type: actionTypes.CART_ADD, payload: { id, price } })
+        addToCart: (id, price, quantity) => dispatch({ type: actionTypes.CART_ADD, payload: { id, price, quantity } })
     }
 }
 

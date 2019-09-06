@@ -11,26 +11,27 @@ const initialState = {
 }
 
 const addItem = (state, action) => {
+  console.log(action);
   let cart_item = state.products.find(item => {
     return item.id === action.payload.id
   })
   let in_cart = state.cart_items.find(item => action.payload.id === item.id)
   if (in_cart) {
-    cart_item.quantity += 1
+    cart_item.quantity += action.payload.quantity
     return {
       ...state,
-      price: state.price + action.payload.price,
       cart_items: [...state.cart_items],
-      cart_quantity: state.cart_quantity + 1
+      price: state.price + action.payload.price * action.payload.quantity,
+      cart_quantity: state.cart_quantity + action.payload.quantity
     }
   }
   else {
-    cart_item.quantity = 1;
+    cart_item.quantity = action.payload.quantity;
     return {
       ...state,
       cart_items: [...state.cart_items, cart_item],
-      price: state.price + action.payload.price,
-      cart_quantity: state.cart_quantity + 1
+      price: state.price + action.payload.price * action.payload.quantity,
+      cart_quantity: state.cart_quantity + action.payload.quantity
     }
   }
 }

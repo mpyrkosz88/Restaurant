@@ -17,7 +17,7 @@ class Modal extends Component {
                     transform: this.props.show ? 'translateY(0)' : 'translateY(-150vh)',
                     opacity: this.props.show ? '1' : '0'
                 }}>
-                <i className="fas fa-times-circle fa-2x" onClick={this.props.clicked}></i>
+                <i className={classes.Button + " fas fa-times-circle fa-2x"} onClick={this.props.clicked}></i>
                 {this.props.children}
             </div>
             </ReactAux>
