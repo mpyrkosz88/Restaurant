@@ -1,6 +1,8 @@
 # Restaurant
 Page for restaurant made with React JS, Redux and SCSS.
 
+Pictures are in .webp format, so it won't work on Safari.
+
 To connect with backend I used axios.
 
 Backend on firebase.
